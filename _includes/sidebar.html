@@ -11,13 +11,6 @@
       {% assign post_list = site.posts %}
 
       <a class="sidebar-nav-item{% if page.url == "/index.html" %} active{% endif %}" href="{{ site.baseurl }}">Home</a>
-      {% if page.url == "/index.html" %}
-        {% for post in post_list reversed %}
-          {% if post.category == "Home" %}
-            <a class="sidebar-sub-nav-item" href="#{{ post.url }}">-{{ post.title }}</a>
-          {% endif %}
-        {% endfor %}
-      {% endif %}
 
       {% comment %}
         The code below dynamically generates a sidebar nav of pages with
