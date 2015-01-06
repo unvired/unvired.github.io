@@ -1,0 +1,24 @@
+# Dependencies
+markdown:         redcarpet
+highlighter:      rouge
+
+# Permalinks
+permalink:        none
+relative_permalinks: true
+
+# Setup
+title:            Unvired
+tagline:          'Enterprise Mobile Applications'
+description:      'Build amazing mobile apps connecting to SAP, Oracle, Sharepoint and more with ease on the Unvired Mobile Platform.'
+url:              http://unvired.com
+baseurl:          /
+
+author:
+  name:           'Unvired Inc'
+  url:            https://twitter.com/unvired
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           https://github.com/unvired/unvired.github.io
