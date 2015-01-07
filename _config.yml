@@ -8,7 +8,7 @@ relative_permalinks: true
 
 # Setup
 title:            Unvired
-tagline:          'Enterprise Mobile Applications'
+tagline:          'Developer Portal'
 description:      'Build amazing mobile apps connecting to SAP, Oracle, Sharepoint and more with ease on the Unvired Mobile Platform.'
 url:              http://unvired.com
 baseurl:          /
