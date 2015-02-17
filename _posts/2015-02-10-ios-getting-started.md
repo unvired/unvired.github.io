@@ -8,10 +8,6 @@ Try out the Unvired Hello World Project from GitHub. This project can also be us
 
 Using CocoaPods takes care of all the required frameworks and third party dependencies.
 
-<div class="message">
-<strong>API Documentation: </string><a href="http://cocoadocs.org/docsets/UnviredSDK/" target="_blank">Unvired iOS SDK Documentation</a>
-</div>
-
 Install CocoaPods (if not already installed)
 -------
 
