@@ -1,0 +1,30 @@
+---
+layout: page
+title: Windows 8.1 Development Guide
+---
+
+<p class="message">
+  Follow the simple steps below to get started with the UnviredSDK for Windows 8.1.  You will need access to GitHub and NuGet to complete the steps successfully.  In order to run the project you will need the details of the Unvired server also.
+</p>
+
+<H3>Supported Windows Platforms</H3>
+<ul>
+  <li>x86</li>
+  <li>x64</li>
+</ul>
+ 
+<div class="posts">
+  {% for post in site.posts reversed %}
+  {% if post.category == "Windows 8.1 Development Guide" %}
+    <div class="post">
+      <h1 class="post-title">
+        {{ post.title }}
+        <a name="{{ post.url }}">
+        </a>
+      </h1>
+
+      {{ post.content }}
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
