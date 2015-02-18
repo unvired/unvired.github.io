@@ -1,7 +1,7 @@
 ---
 layout: post
 title: API Docs
-category: iOS Development Guide
+category: iOS Development
 ---
 
 <div class="message">

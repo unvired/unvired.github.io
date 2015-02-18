@@ -1,0 +1,30 @@
+---
+layout: page
+title: HTML5 Hybrid Development
+---
+
+<p class="message">
+ The Unvired HTML5 Hybrid SDK is based on the Apache Cordova project and enables application developers to build native mobile applications in HTML5 using frameworks like Sencha Touch, JQuery, Ionic, SAP Open UI5 etc. Unvired HTML5 Hybrid SDK and Unvired Native SDK together provide complete choice to enterprises and application developers to build high quality enterprise mobile applications connecting to SAP, Oracle, Sharepoint etc easily.
+</p>
+
+<h3>Supported Mobile Platforms</h3>
+<ul>
+  <li>Android</li>
+  <li>iOS</li>
+</ul>
+ 
+<div class="posts">
+  {% for post in site.posts reversed %}
+  {% if post.category == "HTML5 Hybrid Development" %}
+    <div class="post">
+      <h1 class="post-title">
+        {{ post.title }}
+        <a name="{{ post.url }}">
+        </a>
+      </h1>
+
+      {{ post.content }}
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>

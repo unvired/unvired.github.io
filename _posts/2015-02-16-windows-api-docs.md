@@ -1,7 +1,7 @@
 ---
 layout: post
 title: API Docs
-category: Windows 8.1 Development Guide
+category: Windows 8.1 Development
 ---
 
 <div class="message">

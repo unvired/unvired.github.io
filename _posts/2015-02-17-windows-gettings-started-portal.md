@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Getting Started
-category: Windows 8.1 Development Guide
+category: Windows 8.1 Development
 ---
 
 Try out the Unvired Hello World Project from GitHub. This Application showcases how to use Unvired Mobile Platform SDK's for building a Windows 8 mobile application. This project can also be used as a template to create new applications. Install Unvired Windows Framework into your project through Nuget Package Manager.

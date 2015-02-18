@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Get Started
-category: iOS Development Guide
+title: Getting Started
+category: iOS Development
 ---
 
 Try out the Unvired Hello World Project from GitHub. This project can also be used as a template for building Unvired Applications. This project depends on Unvired SDK. We use CocoaPods as the dependency manager for installing UnviredSDK.
