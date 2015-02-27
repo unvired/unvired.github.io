@@ -22,7 +22,9 @@ First, install <a href="http://nodejs.org/">Node.js</a>. Then, install the lates
 Follow the <a href="http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide">Android</a> and <a href="http://cordova.apache.org/docs/en/3.3.0/guide_platforms_ios_index.md.html#iOS%20Platform%20Guide">iOS</a> platform guides to install required platform dependencies for cordova. 
 </p>
 
-<h4><code> > npm install -g unvired</h4></code><br>
+<div class="message">
+	> npm install -g unvired
+</div>
 
 <img class="centered" src="{{ site.baseurl }}public/npmUnvired.png" alt="Unvired NPM CLI"><br>
 
@@ -31,11 +33,15 @@ Follow the <a href="http://cordova.apache.org/docs/en/3.3.0/guide_platforms_andr
 
 Create an Unvired template project using Unvired NPM CLI.
 
-<h4><code> > unvired start ApplicationPath Platform</h4></code> 
+<div class="message">
+	> unvired start ApplicationPath Platform
+</div>
 
-Let's create an  HelloWorld application in in andorid.
+Let's create a HelloWorld application in Andorid.
 
-<h4><code> > unvired start HelloWorld android</h4></code><br>
+<div class="message">
+	> unvired start HelloWorld android
+</div>
 
 <img class="centered" src="{{ site.baseurl }}public/npmCreate.png" alt="Unvired Start"><br>
 
@@ -53,7 +59,10 @@ Not you can build and run this project.
 You can also add Unvired SDK to an existing Cordova project using Unvired NPM CLI.
 To add Unvired SDK to an existing project navigate to your project root directory and then run add platform command.
 
-<h4><code> > unvired add android</h4></code><br>
+<div class="message">
+	> unvired add android
+</div>
+
 <img class="centered" src="{{ site.baseurl }}public/npmAdd.png" alt="Unvired NPM add"><br>
 
 

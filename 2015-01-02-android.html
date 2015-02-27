@@ -1,0 +1,24 @@
+---
+layout: page
+title: Android Development
+---
+
+<p class="message">
+  Follow the simple steps below to get started with the UnviredSDK for Android.  You will need access to Eclipse Marketplace (or the Unvired Eclipse Update site) and Github to complete the steps successfully.  In order to run the project you will need the details of the Unvired server also.
+</p>
+
+<div class="posts">
+  {% for post in site.posts reversed %}
+  {% if post.category == "Android Development" %}
+    <div class="post">
+      <h1 class="post-title">
+        {{ post.title }}
+        <a name="{{ post.url }}">
+        </a>
+      </h1>
+
+      {{ post.content }}
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>

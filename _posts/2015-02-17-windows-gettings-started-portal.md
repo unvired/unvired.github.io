@@ -17,22 +17,28 @@ Try out the Unvired Hello World Project from GitHub. This Application showcases 
 <div class="message">
 Unvired SDK supports data persistence via the free SQLite or the commerical SQLCipher.  If you want to use encrypted database please purchase a license for SQLCipher and install it. You can then set the encrypted property in the LoginParameters class to enable encryption.
 </div>
+
 <p>
 <h3>Clone Unvired Hello World Project</h3>
 
 Clone <a href="https://github.com/unvired/hello-world-windows8">hello-world-windows8</a> hosted in GitHub by executing the following command in the Console.
-
-<h4><code>$ git clone https://github.com/unvired/hello-world-windows8.git</code></h4>
-<br/>
-or use <a href="https://windows.github.com/">GitHub for Windows</a>
+<div class="message">
+	$ git clone https://github.com/unvired/hello-world-windows8.git <br/>
+	or use <a href="https://windows.github.com/">GitHub for Windows</a>
+</div>
 </p>
+
 
 <p>
 <h3>Install Unvired SDK (via Nuget)</h3>
 
 To install Unvired Mobile Platform (x64/x86) Framework for Windows Tablets, run the following command in the Package Manager Console.<br/>
 
-<h4><code>PM> Install-Package UnviredFramework.x64</code></h4><span style="padding-left: 10px">or</span><br><h4><code>PM> Install-Package UnviredFramework.x86</code></h4><br>
+<div class="message">
+PM> Install-Package UnviredFramework.x64 <br>
+or <br>
+PM> Install-Package UnviredFramework.x86
+</div>
 
 You can also install from Visual Studio. Right click on project, select Manage Nuget Project. Then search for Unvired. Install <a href="https://www.nuget.org/packages/UnviredFramework.x64/">UnviredFramework.x64</a> or <a href="https://www.nuget.org/packages/UnviredFramework.x86/">UnviredFramework.x86</a> as per your project configuration.
 
