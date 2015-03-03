@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Getting Started
+title: Android Studio
 category: Android Development
 ---
 

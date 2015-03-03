@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Getting Started
+title: Eclipse
 category: Android Development
 ---
 
