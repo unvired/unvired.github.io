@@ -12,7 +12,7 @@
       "url": "http://unvired.com/resources/sdk-license"
     }
   },
-  "host": "demo.unvired.io",
+  "host": "192.168.98.105:8080",
   "basePath": "/UMP",
   "tags": [
     {
@@ -28,12 +28,12 @@
       "description": "Operations on an Unvired Library"
     },
     {
-      "name": "groups",
-      "description": "Operations on an Unvired Group"
-    },
-    {
       "name": "messages",
       "description": "Operations on an Unvired Message"
+    },
+    {
+      "name": "groups",
+      "description": "Operations on an Unvired Group"
     },
     {
       "name": "status",
@@ -53,7 +53,6 @@
     }
   ],
   "schemes": [
-    "https",
     "http"
   ],
   "paths": {
@@ -2922,6 +2921,20 @@
             "name": "planName",
             "in": "path",
             "description": "Plan name to activate",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Plan start date (mm/dd/yyyy)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Plan end date (mm/dd/yyyy)",
             "required": true,
             "type": "string"
           }
