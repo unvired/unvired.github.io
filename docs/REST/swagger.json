@@ -12,7 +12,7 @@
       "url": "http://unvired.com/resources/sdk-license"
     }
   },
-  "host": "192.168.98.105:8080",
+  "host": "demo.unvired.io",
   "basePath": "/UMP",
   "tags": [
     {
@@ -53,7 +53,8 @@
     }
   ],
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
   "paths": {
     "/API/v2/applications/{appName}": {
@@ -639,6 +640,7 @@
         "description": "Execute an Application Function to leverage functionality on SAP, Oracle, Sharepoint etc. Any application user can access this API",
         "operationId": "executeUsingPOST",
         "consumes": [
+          "application/xml",
           "application/json"
         ],
         "produces": [
@@ -661,11 +663,16 @@
             "type": "string"
           },
           {
-            "name": "frontendUser",
-            "in": "query",
-            "description": "Frontend user or device requesting the execution, if only one frontend user us present this parameter is optional",
-            "required": false,
-            "type": "string"
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Input Message Content Type",
+            "required": true,
+            "type": "string",
+            "default": "application/xml",
+            "enum": [
+              "application/xml",
+              "application/json"
+            ]
           },
           {
             "name": "inputMessage",
@@ -680,21 +687,18 @@
             "description": "Message format",
             "required": false,
             "type": "string",
+            "default": "standard",
             "enum": [
               "standard",
               "custom"
             ]
           },
           {
-            "name": "clientMsgId",
+            "name": "frontendUser",
             "in": "query",
-            "description": "Unique message Id (a GUID) that the caller has to provide, this ensures that the same request is not posted multiple times (for eg. due to connectivity issues etc)",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "standard",
-              "custom"
-            ]
+            "description": "Frontend user or device requesting the execution, if only one frontend user us present this parameter is optional",
+            "required": false,
+            "type": "string"
           },
           {
             "name": "queuedExecute",
@@ -702,7 +706,7 @@
             "description": "Execute and return results or queue for execution",
             "required": true,
             "type": "string",
-            "default": "true",
+            "default": "false",
             "enum": [
               "true",
               "false"
@@ -711,7 +715,7 @@
           {
             "name": "externalReference",
             "in": "query",
-            "description": "Optional external reference id to associate with the message",
+            "description": "Optional external reference id to associate with the message, mandatory if queued request (async)",
             "required": false,
             "type": "string"
           },
@@ -727,11 +731,7 @@
             "in": "query",
             "description": "System credentials for backend systems, JSON format [{ \"port\": \"LOGICAL_PORT_NAME\", \"user\": \"USER_NAME\", \"password\": \"PASSWORD\"}]",
             "required": false,
-            "type": "string",
-            "enum": [
-              "standard",
-              "custom"
-            ]
+            "type": "string"
           }
         ],
         "responses": {
@@ -779,6 +779,7 @@
         "description": "Execute an Application Function on behalf of other users to leverage functionality on SAP, Oracle, Sharepoint etc. Only application users of type External Server can access this API",
         "operationId": "executeForUsingPOST",
         "consumes": [
+          "application/xml",
           "application/json"
         ],
         "produces": [
@@ -801,6 +802,18 @@
             "type": "string"
           },
           {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Input Message Content Type",
+            "required": true,
+            "type": "string",
+            "default": "application/xml",
+            "enum": [
+              "application/xml",
+              "application/json"
+            ]
+          },
+          {
             "name": "inputMessage",
             "in": "query",
             "description": "Input message for the function",
@@ -813,21 +826,18 @@
             "description": "Message format",
             "required": false,
             "type": "string",
+            "default": "standard",
             "enum": [
               "standard",
               "custom"
             ]
           },
           {
-            "name": "clientMsgId",
+            "name": "frontendUser",
             "in": "query",
-            "description": "Unique message Id (a GUID) that the caller has to provide, this ensures that the same request is not posted multiple times (for eg. due to connectivity issues etc)",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "standard",
-              "custom"
-            ]
+            "description": "Frontend user requesting the execution, if only one frontend user is present this parameter is optional.  (user has to be of type External Server)",
+            "required": false,
+            "type": "string"
           },
           {
             "name": "userType",
@@ -867,8 +877,8 @@
           {
             "name": "externalReference",
             "in": "query",
-            "description": "Optional external reference id to associate with the message",
-            "required": false,
+            "description": "External reference id to associate with the message",
+            "required": true,
             "type": "string"
           }
         ],
@@ -1302,14 +1312,21 @@
           {
             "name": "appName",
             "in": "path",
-            "description": "Application to retrieve property",
+            "description": "Application to update property",
             "required": true,
             "type": "string"
           },
           {
             "name": "property",
             "in": "path",
-            "description": "Property to retrieve",
+            "description": "Property to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "description": "Application property value to set",
             "required": true,
             "type": "string"
           }
@@ -1353,6 +1370,7 @@
         "description": "Push a message for an Application. A message is either standard or custom XML or JSON content that is required by the mobile or web application. Any application user can access this API",
         "operationId": "pushMessageUsingPOST",
         "consumes": [
+          "application/xml",
           "application/json"
         ],
         "produces": [
@@ -1366,6 +1384,18 @@
             "description": "Application to push message",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Input Message Content Type",
+            "required": true,
+            "type": "string",
+            "default": "application/xml",
+            "enum": [
+              "application/xml",
+              "application/json"
+            ]
           },
           {
             "name": "inputMessage",
@@ -1644,6 +1674,37 @@
             "required": true,
             "type": "string",
             "default": "*"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "description": "Value to store",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "secure",
+            "in": "query",
+            "description": "Secure setting, value not displayed",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
+          },
+          {
+            "name": "hidden",
+            "in": "query",
+            "description": "Hidden settings are not displayed ",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
           }
         ],
         "responses": {
@@ -1710,6 +1771,37 @@
             "required": true,
             "type": "string",
             "default": "*"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "description": "Value to store",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "secure",
+            "in": "query",
+            "description": "Secure setting, value not displayed",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
+          },
+          {
+            "name": "hidden",
+            "in": "query",
+            "description": "Hidden settings are not displayed ",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
           }
         ],
         "responses": {
@@ -2042,6 +2134,37 @@
             "description": "Setting / Key to create or modify",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "description": "Value to store",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "secure",
+            "in": "query",
+            "description": "Secure setting, value not displayed",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
+          },
+          {
+            "name": "hidden",
+            "in": "query",
+            "description": "Hidden settings are not displayed ",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
           }
         ],
         "responses": {
@@ -2107,6 +2230,37 @@
             "description": "Setting / Key to create or modify",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "description": "Value to store",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "secure",
+            "in": "query",
+            "description": "Secure setting, value not displayed",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
+          },
+          {
+            "name": "hidden",
+            "in": "query",
+            "description": "Hidden settings are not displayed ",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
           }
         ],
         "responses": {
@@ -3825,65 +3979,6 @@
         ]
       }
     },
-    "/API/v2/status/node": {
-      "get": {
-        "tags": [
-          "status"
-        ],
-        "summary": "Returns the detailed information on the server nodes",
-        "description": "Returns the detailed information on the different nodes of the UMP installation. Only Administrators of the root company can access this API",
-        "operationId": "getNodeStatusUsingGET",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/xml",
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "expand",
-            "in": "query",
-            "description": "Provide expanded details",
-            "required": false,
-            "type": "string",
-            "default": "false",
-            "enum": [
-              "true",
-              "false"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Application status returned",
-            "schema": {
-              "$ref": "#/definitions/UmpNodeResponse"
-            }
-          },
-          "400": {
-            "description": "Invalid data supplied"
-          },
-          "401": {
-            "description": "Incorrect password/authkey, password expired or REST API disabled"
-          },
-          "403": {
-            "description": "Company plan has expired or does not have a valid plan"
-          },
-          "404": {
-            "description": "Company or User not found"
-          },
-          "500": {
-            "description": "Server error"
-          }
-        },
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ]
-      }
-    },
     "/API/v2/status/notifications": {
       "get": {
         "tags": [
@@ -4070,6 +4165,18 @@
             "type": "string"
           },
           {
+            "name": "userType",
+            "in": "query",
+            "description": "Type of user to create",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "APPLICATION",
+              "ADMIN",
+              "DEVELOPER"
+            ]
+          },
+          {
             "name": "phone",
             "in": "query",
             "description": "Phone number of the  user",
@@ -4084,15 +4191,15 @@
             "type": "string"
           },
           {
-            "name": "userType",
+            "name": "verifyMail",
             "in": "query",
-            "description": "Type of user to create",
-            "required": true,
+            "description": "Should the email be verified?  If true, an email with a one time token to verify the email will be sent",
+            "required": false,
             "type": "string",
+            "default": "false",
             "enum": [
-              "APPLICATION",
-              "ADMIN",
-              "DEVELOPER"
+              "false",
+              "true"
             ]
           }
         ],
