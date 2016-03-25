@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Unvired Mobile Platform Rest API",
+    "description": "Unvired Mobile Platform Rest API. API Authentication is HTTP BASIC Auth, the user should be passed in as COMPANY\\USER. Note: Due to an issue with the way the docs are generated, the response object is not generated correctly.  Until the upstream provider corrects it please check actual responses.",
     "version": "V2 (Release 2016)",
     "title": "The UMP Rest API",
     "contact": {
@@ -307,6 +307,13 @@
             "in": "path",
             "description": "Application name associated with the attachment",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "credentials",
+            "in": "query",
+            "description": "System credentials for backend systems, JSON format [{ \"port\": \"LOGICAL_PORT_NAME\", \"user\": \"USER_NAME\", \"password\": \"PASSWORD\"}]",
+            "required": false,
             "type": "string"
           }
         ],
@@ -640,7 +647,6 @@
         "description": "Execute an Application Function to leverage functionality on SAP, Oracle, Sharepoint etc. Any application user can access this API",
         "operationId": "executeUsingPOST",
         "consumes": [
-          "application/xml",
           "application/json"
         ],
         "produces": [
@@ -759,6 +765,12 @@
           "404": {
             "description": "Application not found"
           },
+          "406": {
+            "description": "Invalid Accept Type, application is not capable of returning the requested type"
+          },
+          "415": {
+            "description": "Invalid Content Type, application is not capable of accepting the message type"
+          },
           "500": {
             "description": "Server error"
           }
@@ -779,7 +791,6 @@
         "description": "Execute an Application Function on behalf of other users to leverage functionality on SAP, Oracle, Sharepoint etc. Only application users of type External Server can access this API",
         "operationId": "executeForUsingPOST",
         "consumes": [
-          "application/xml",
           "application/json"
         ],
         "produces": [
@@ -856,7 +867,7 @@
           {
             "name": "users",
             "in": "query",
-            "description": "Comma separated list of users",
+            "description": "Comma separated list of users based on the userType",
             "required": false,
             "type": "string"
           },
@@ -906,6 +917,12 @@
           },
           "404": {
             "description": "Application not found"
+          },
+          "406": {
+            "description": "Invalid Accept Type, application is not capable of returning the requested type"
+          },
+          "415": {
+            "description": "Invalid Content Type, application is not capable of accepting the message type"
           },
           "500": {
             "description": "Server error"
@@ -1050,8 +1067,8 @@
         "tags": [
           "applications"
         ],
-        "summary": "Register for Push notifications",
-        "description": "Register for Push notifications for an Application. Any application user can access this API",
+        "summary": "Deregister for Push notifications",
+        "description": "Deregister for Push notifications for an Application. Any application user can access this API",
         "operationId": "deletePushRegisterUsingDELETE",
         "consumes": [
           "application/json"
@@ -1085,7 +1102,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Push registered",
+            "description": "Push deregistered",
             "schema": {
               "$ref": "#/definitions/ApplicationResponse"
             }
@@ -1370,7 +1387,6 @@
         "description": "Push a message for an Application. A message is either standard or custom XML or JSON content that is required by the mobile or web application. Any application user can access this API",
         "operationId": "pushMessageUsingPOST",
         "consumes": [
-          "application/xml",
           "application/json"
         ],
         "produces": [
@@ -1416,6 +1432,13 @@
             ]
           },
           {
+            "name": "alert",
+            "in": "query",
+            "description": "Alert (Push Notification) message that is displayed to the user when this message is delivered.  If not set notification to download updates will be displayed",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "userType",
             "in": "query",
             "description": "Type of the user(s) to push the message",
@@ -1432,7 +1455,7 @@
           {
             "name": "users",
             "in": "query",
-            "description": "Comma separated list of users",
+            "description": "Comma separated list of users based on the userType",
             "required": false,
             "type": "string"
           },
@@ -1456,6 +1479,13 @@
             "description": "Optional external reference id to associate with the message",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "frontendUser",
+            "in": "query",
+            "description": "Frontend user requesting the execution, if only one frontend user is present this parameter is optional",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -1476,6 +1506,12 @@
           },
           "404": {
             "description": "Application not found"
+          },
+          "406": {
+            "description": "Invalid Accept Type, application is not capable of returning the requested type"
+          },
+          "415": {
+            "description": "Invalid Content Type, application is not capable of accepting the message type"
           },
           "500": {
             "description": "Server error"
@@ -1512,10 +1548,45 @@
             "type": "string"
           },
           {
-            "name": "inputMessage",
+            "name": "title",
             "in": "query",
-            "description": "Notification message to push",
+            "description": "Notification Title",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "alert",
+            "in": "query",
+            "description": "Notification Alert message",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sound",
+            "in": "query",
+            "description": "Sound to play for the notification",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "description": "Notification action",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Notification category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "context",
+            "in": "query",
+            "description": "Notification context, can be any small string of data that the client applicaiton can use to associate the data and the notification",
+            "required": false,
             "type": "string"
           },
           {
@@ -1535,7 +1606,7 @@
           {
             "name": "users",
             "in": "query",
-            "description": "Comma separated list of users",
+            "description": "Comma separated list of users based on the userType",
             "required": false,
             "type": "string"
           },
@@ -1550,6 +1621,13 @@
             "name": "portName",
             "in": "query",
             "description": "If the type of user is backendUser, then the UMP logical name of the port (system) these users belong to is specified here",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "frontendUser",
+            "in": "query",
+            "description": "Frontend user requesting the execution, if only one frontend user is present this parameter is optional",
             "required": false,
             "type": "string"
           }
@@ -1705,6 +1783,18 @@
               "true",
               "false"
             ]
+          },
+          {
+            "name": "mobileSetting",
+            "in": "query",
+            "description": "Setting to be created as mobile setting",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
           }
         ],
         "responses": {
@@ -1795,6 +1885,18 @@
             "name": "hidden",
             "in": "query",
             "description": "Hidden settings are not displayed ",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
+          },
+          {
+            "name": "mobileSetting",
+            "in": "query",
+            "description": "Setting to be created as mobile setting",
             "required": false,
             "type": "string",
             "default": "false",
@@ -1966,7 +2068,7 @@
           "applications"
         ],
         "summary": "Get users deployment status for an application",
-        "description": "Gets the users deployment status for an application. Any application user can access this API",
+        "description": "Gets the users deployment status for an application. Super Admin or Administrator of the current company can access this API",
         "operationId": "getApplicationUsersUsingGET",
         "consumes": [
           "application/json"
@@ -4339,6 +4441,57 @@
         ]
       }
     },
+    "/API/v2/users/:me/verifyEmail": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Verify Email",
+        "description": "This API can be used to request a verification email. Only the current user can access this API",
+        "operationId": "verifyEmailUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Verification mail sent",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          },
+          "204": {
+            "description": "Email already verified",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "REST API disabled"
+          },
+          "403": {
+            "description": "Company plan has expired or does not have a valid plan"
+          },
+          "404": {
+            "description": "Unvired User not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
     "/API/v2/users/{userName}": {
       "get": {
         "tags": [
@@ -4457,6 +4610,18 @@
             "description": "Email Id of the  user to create",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "verifyMail",
+            "in": "query",
+            "description": "Should the email be verified?  If true, an email with a one time token to verify the email will be sent",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "false",
+              "true"
+            ]
           }
         ],
         "responses": {
@@ -5523,10 +5688,10 @@
         "lastName": {
           "type": "string"
         },
-        "name": {
+        "status": {
           "type": "string"
         },
-        "status": {
+        "userName": {
           "type": "string"
         },
         "userType": {
