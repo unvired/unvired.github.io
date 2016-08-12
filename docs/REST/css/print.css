@@ -134,6 +134,7 @@
 .swagger-section .hljs-attribute,
 .swagger-section .hljs-selector-tag,
 .swagger-section .hljs-meta-keyword,
+.swagger-section .hljs-doctag,
 .swagger-section .hljs-name {
   font-weight: bold;
 }
