@@ -13,7 +13,10 @@ Welcome to the Unvired Developer Portal.
 </div>
 
 <div class="message">
+<strong>Other Documents</strong>
+<br>
 <strong>Administration Guide: </strong><a href="https://unvired.atlassian.net/wiki/display/UAG" target="_blank">Unvired Administration Guide</a>
+<br>
 <strong>Installation Guide: </strong><a href="https://unvired.atlassian.net/wiki/display/IG" target="_blank">Unvired Installation Guide</a>
 </div>
 
