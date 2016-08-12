@@ -324,6 +324,12 @@
               "$ref": "#/definitions/AttachmentResponse"
             }
           },
+          "204": {
+            "description": "File Queued for download",
+            "schema": {
+              "$ref": "#/definitions/AttachmentResponse"
+            }
+          },
           "400": {
             "description": "Invalid data supplied"
           },
@@ -1130,6 +1136,132 @@
         ]
       }
     },
+    "/API/v2/applications/{appName}/library/{libName}": {
+      "post": {
+        "tags": [
+          "applications"
+        ],
+        "summary": "Deploy a library for an application",
+        "description": "Deploy a library for an application. In a Development environment Super Admin,Administrator or Developer of the current company can access this API. In Production environment Super Admin or Administrator of the current company can access this API",
+        "operationId": "deployLibraryUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "path",
+            "description": "Application to deploy library to",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "libName",
+            "in": "path",
+            "description": "library to be deployed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Library already deployed",
+            "schema": {
+              "$ref": "#/definitions/ApplicationResponse"
+            }
+          },
+          "204": {
+            "description": "Library successfully deployed",
+            "schema": {
+              "$ref": "#/definitions/ApplicationResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Incorrect password/authkey, password expired or REST API disabled"
+          },
+          "403": {
+            "description": "Company plan has expired or lib cannot be deployed or does not have a valid plan"
+          },
+          "404": {
+            "description": "Application or Library not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "applications"
+        ],
+        "summary": "Deploy a library for an application",
+        "description": "Deploy a library for an application. In a Development environment Super Admin,Administrator or Developer of the current company can access this API. In Production environment Super Admin or Administrator of the current company can access this API",
+        "operationId": "unDeployLibraryUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "path",
+            "description": "Application to deploy library to",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "libName",
+            "in": "path",
+            "description": "library to be deployed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Library successfully undeployed",
+            "schema": {
+              "$ref": "#/definitions/ApplicationResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Incorrect password/authkey, password expired or REST API disabled"
+          },
+          "403": {
+            "description": "Company plan has expired or lib cannot be deployed or does not have a valid plan"
+          },
+          "404": {
+            "description": "Application or Library not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
     "/API/v2/applications/{appName}/message/{frontendUser}": {
       "get": {
         "tags": [
@@ -1285,6 +1417,72 @@
         "responses": {
           "200": {
             "description": "Applciation Property retrieved",
+            "schema": {
+              "$ref": "#/definitions/ApplicationPropertiesResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Incorrect password/authkey, password expired or REST API disabled"
+          },
+          "403": {
+            "description": "Company plan has expired or does not have a valid plan"
+          },
+          "404": {
+            "description": "Application or property not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "applications"
+        ],
+        "summary": "Update specific property for an Application",
+        "description": "Update specific property for an Application. Properties are preconfigured by the administrator of UMP. Any application user can access this API",
+        "operationId": "updateApplicationPropertyUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "path",
+            "description": "Application to update property",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "property",
+            "in": "path",
+            "description": "Property to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "description": "Application property value to set",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Applciation Property updated",
             "schema": {
               "$ref": "#/definitions/ApplicationPropertiesResponse"
             }
@@ -2620,9 +2818,37 @@
             "type": "string"
           },
           {
-            "name": "email",
+            "name": "password",
             "in": "query",
-            "description": "Email",
+            "description": "Password",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "folder",
+            "in": "query",
+            "description": "Company Data Folder in case of Data Center Edition",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "bucketname",
+            "in": "query",
+            "description": "Company Bucket Name in case of AWS or Google Edition",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "bucketkey",
+            "in": "query",
+            "description": "Company Bucket Key in case of AWS or Google Edition",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "secret",
+            "in": "query",
+            "description": "Company Bucket password in case of AWS or Google Edition",
             "required": true,
             "type": "string"
           }
@@ -4448,7 +4674,7 @@
         ],
         "summary": "Verify Email",
         "description": "This API can be used to request a verification email. Only the current user can access this API",
-        "operationId": "verifyEmailUsingGET",
+        "operationId": "sendVerifyEmailUsingGET",
         "consumes": [
           "application/json"
         ],
@@ -4465,6 +4691,55 @@
           },
           "204": {
             "description": "Email already verified",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "REST API disabled"
+          },
+          "403": {
+            "description": "Company plan has expired or does not have a valid plan"
+          },
+          "404": {
+            "description": "Unvired User not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Verify Email",
+        "description": "This API can be used to verify the email of the user. Only the current user can access this API",
+        "operationId": "verifyEmailUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Email already verified",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          },
+          "204": {
+            "description": "Email verification successfull",
             "schema": {
               "$ref": "#/definitions/UserResponse"
             }
@@ -4608,6 +4883,13 @@
             "name": "mailId",
             "in": "query",
             "description": "Email Id of the  user to create",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Enable or Disable a user, only a SA or admin can do this",
             "required": false,
             "type": "string"
           },
@@ -5566,6 +5848,9 @@
     "SessionResponse": {
       "properties": {
         "authKey": {
+          "type": "string"
+        },
+        "buildNo": {
           "type": "string"
         },
         "deployment": {
