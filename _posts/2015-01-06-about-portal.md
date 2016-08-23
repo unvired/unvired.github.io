@@ -10,6 +10,7 @@ Welcome to the Unvired Developer Portal.
 <strong>Developer Documentation: </strong><a href="https://unvired.atlassian.net/wiki/display/DG" target="_blank">Unvired Development Guide</a>
 <br>
 <strong>REST API / Swagger Documentation: </strong><a href="http://developer.unvired.com/docs/REST/" target="_blank">REST API Reference</a>
+<strong>Swagger Definition File: </strong><a href="http://developer.unvired.com/docs/REST/swagger.json" target="_blank">Swagger REST API JSON Definition</a>
 </div>
 
 <div class="message">
