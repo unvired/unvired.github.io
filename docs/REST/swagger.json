@@ -17,35 +17,35 @@
   "tags": [
     {
       "name": "companies",
-      "description": "Operations on an Unvired Company"
+      "description": "Operations on a Company"
     },
     {
       "name": "session",
-      "description": "Session management for Unvired Users"
+      "description": "Session management for Users"
     },
     {
       "name": "libraries",
-      "description": "Operations on an Unvired Library"
+      "description": "Operations on a Library"
     },
     {
       "name": "messages",
-      "description": "Operations on an Unvired Message"
+      "description": "Operations on Messages"
     },
     {
       "name": "groups",
-      "description": "Operations on an Unvired Group"
+      "description": "Operations on a Group"
     },
     {
       "name": "status",
-      "description": "Unvired Mobile Platform Status"
+      "description": "Platform Status"
     },
     {
       "name": "users",
-      "description": "Operations on an Unvired User"
+      "description": "Operations on a User"
     },
     {
       "name": "applications",
-      "description": "Operations on Unvired Applications"
+      "description": "Operations on Applications"
     },
     {
       "name": "attachments",
@@ -2717,8 +2717,8 @@
         "tags": [
           "companies"
         ],
-        "summary": "List all Unvired Companies ",
-        "description": "Returns a list of all available Unvired Companies.  Super Admin or Admin of root company can access this API",
+        "summary": "List all Companies ",
+        "description": "Returns a list of all available Companies.  Super Admin or Admin of root company can access this API",
         "operationId": "getCompaniesUsingGET",
         "consumes": [
           "application/json"
