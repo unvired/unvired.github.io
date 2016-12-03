@@ -6,7 +6,7 @@ category: Home
 
 Welcome to the Unvired Developer Portal.
 
-<div class="message">
+
 <strong>Developer Documentation: </strong><a href="https://unvired.atlassian.net/wiki/display/DG" target="_blank">Unvired Development Guide</a>
 <br><br>
 <strong><u>REST API Current</u></strong>
@@ -25,7 +25,7 @@ Welcome to the Unvired Developer Portal.
 <strong>UMP v3 Swagger Definition File: </strong><a href="http://developer.unvired.com/docs/REST/swagger-UMP3.json" target="_blank">Swagger REST API JSON Definition for UMP v3</a>
 <br>
 <strong>Use Postman? Click the button to Run UMP v3 APIs in Postman.</strong> [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b0f18da3a10d1c71ac04)
-</div>
+
 
 <div class="message">
 <strong><u>Other Documents</u></strong>
