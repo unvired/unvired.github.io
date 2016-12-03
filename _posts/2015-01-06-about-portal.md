@@ -15,7 +15,7 @@ Welcome to the Unvired Developer Portal.
 <br>
 <strong>UMP v4 Swagger Definition File: </strong><a href="http://developer.unvired.com/docs/REST/swagger.json" target="_blank">Swagger REST API JSON Definition for UMP v4</a>
 <br>
-<strong>Use Postman? Click the button to Run UMP v3 APIs in Postman.</strong> [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/a6a2672ed2f3614a7f46)
+<strong>Use Postman? Click the button to Run UMP v4 APIs in Postman.</strong> [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/a6a2672ed2f3614a7f46)
 <br>
 <br>
 <strong><u>REST API Previous Versions</u></strong>
