@@ -3,7 +3,7 @@
   "info": {
     "description": "Unvired Mobile Platform Rest API. API Authentication is HTTP BASIC Auth, the user should be passed in as COMPANY\\USER. Note: Due to an issue with the way the docs are generated, the response object is not generated correctly.  Until the upstream provider corrects it please check actual responses.",
     "version": "V2 (Release 2016)",
-    "title": "The UMP4 Rest API",
+    "title": "The UMP Rest API",
     "contact": {
       "name": "Unvired Inc."
     },
@@ -16,20 +16,8 @@
   "basePath": "/UMP",
   "tags": [
     {
-      "name": "groups",
-      "description": "Operations on Group(s)"
-    },
-    {
-      "name": "status",
-      "description": "Platform Status"
-    },
-    {
-      "name": "applications",
-      "description": "Operations on Application(s)"
-    },
-    {
-      "name": "messages",
-      "description": "Operations on a Message"
+      "name": "companies",
+      "description": "Operations on a Company"
     },
     {
       "name": "session",
@@ -40,16 +28,28 @@
       "description": "Operations on a Library"
     },
     {
+      "name": "messages",
+      "description": "Operations on Messages"
+    },
+    {
+      "name": "groups",
+      "description": "Operations on a Group"
+    },
+    {
+      "name": "status",
+      "description": "Platform Status"
+    },
+    {
       "name": "users",
-      "description": "Operations on User(s)"
+      "description": "Operations on a User"
+    },
+    {
+      "name": "applications",
+      "description": "Operations on Applications"
     },
     {
       "name": "attachments",
       "description": "Operations on Attachments (files in cache)"
-    },
-    {
-      "name": "companies",
-      "description": "Operations on a Company"
     }
   ],
   "schemes": [
@@ -57,51 +57,6 @@
     "https"
   ],
   "paths": {
-    "/API/v2/applications": {
-      "get": {
-        "tags": [
-          "applications"
-        ],
-        "summary": "Returns the list of Applications",
-        "description": "Returns the list of applications of a company. Any valid user of a company can access this API",
-        "operationId": "getApplicationListUsingGET",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/xml",
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Application list returned",
-            "schema": {
-              "$ref": "#/definitions/StatusResponse"
-            }
-          },
-          "400": {
-            "description": "Invalid data supplied"
-          },
-          "401": {
-            "description": "Incorrect password/authkey, password expired or REST API disabled"
-          },
-          "403": {
-            "description": "Company plan has expired or does not have a valid plan"
-          },
-          "404": {
-            "description": "Company or User not found"
-          },
-          "500": {
-            "description": "Server error"
-          }
-        },
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ]
-      }
-    },
     "/API/v2/applications/{appName}": {
       "get": {
         "tags": [
@@ -365,6 +320,12 @@
         "responses": {
           "200": {
             "description": "File downloaded",
+            "schema": {
+              "$ref": "#/definitions/AttachmentResponse"
+            }
+          },
+          "204": {
+            "description": "File Queued for download",
             "schema": {
               "$ref": "#/definitions/AttachmentResponse"
             }
@@ -2756,8 +2717,8 @@
         "tags": [
           "companies"
         ],
-        "summary": "List all Unvired Companies ",
-        "description": "Returns a list of all available Unvired Companies.  Super Admin or Admin of root company can access this API",
+        "summary": "List all Companies ",
+        "description": "Returns a list of all available Companies.  Super Admin or Admin of root company can access this API",
         "operationId": "getCompaniesUsingGET",
         "consumes": [
           "application/json"
@@ -3228,7 +3189,7 @@
           {
             "name": "company",
             "in": "path",
-            "description": "Company to retrieve",
+            "description": "Company to retrive",
             "required": true,
             "type": "string"
           }
@@ -3236,61 +3197,6 @@
         "responses": {
           "200": {
             "description": "Companies retrieved",
-            "schema": {
-              "$ref": "#/definitions/CompanyResponse"
-            }
-          },
-          "400": {
-            "description": "Invalid data supplied"
-          },
-          "401": {
-            "description": "Incorrect password/authkey, password expired or REST API disabled"
-          },
-          "403": {
-            "description": "Company plan has expired or does not have a valid plan"
-          },
-          "500": {
-            "description": "Server error"
-          }
-        },
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "companies"
-        ],
-        "summary": "Delete Company",
-        "description": "Delete a company from a list of Unvired Companies.  Super Admin of root company can access this API",
-        "operationId": "deleteCompanyUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/xml",
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "company",
-            "in": "path",
-            "description": "Company to delete",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/CompanyResponse"
-            }
-          },
-          "204": {
-            "description": "Company removed",
             "schema": {
               "$ref": "#/definitions/CompanyResponse"
             }
@@ -4189,67 +4095,6 @@
         ]
       }
     },
-    "/API/v2/session/applications/{appName}": {
-      "post": {
-        "tags": [
-          "session"
-        ],
-        "summary": "Create a session for Unvired User",
-        "description": "Creates a session for the Unvired user. If building apps where the session needs to be restricted to a single sesion via UMP, this API is useful.  Any valid SAP or ADS user of a company can access this API.",
-        "operationId": "getSapOrAdsSessionUsingPOST",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/xml",
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "appName",
-            "in": "path",
-            "description": "appName",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "credentials",
-            "in": "query",
-            "description": "System credentials for SAP or ADS systems , JSON format for SAP [{ \"port\": \"LOGICAL_PORT_NAME\", \"user\": \"USER_NAME\", \"password\": \"PASSWORD\"}] and JSON format for ADS [{ \"port\": \"LOGICAL_PORT_NAME\", \"user\": \"DOMAIN_NAME\\USER_NAME\", \"password\": \"PASSWORD\"}]",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Session created",
-            "schema": {
-              "$ref": "#/definitions/SessionResponse"
-            }
-          },
-          "400": {
-            "description": "Invalid data supplied"
-          },
-          "401": {
-            "description": "REST API disabled, SAP or ADS login failed"
-          },
-          "403": {
-            "description": "Company plan has expired or does not have a valid plan or session already existing and multiple sessions not enabled"
-          },
-          "404": {
-            "description": "User not found, FederationId not found or Application not found"
-          },
-          "500": {
-            "description": "Server error"
-          }
-        },
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ]
-      }
-    },
     "/API/v2/session/{sessionId}": {
       "delete": {
         "tags": [
@@ -5042,13 +4887,6 @@
             "type": "string"
           },
           {
-            "name": "mailId",
-            "in": "query",
-            "description": "Email Id of the  user to create",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "status",
             "in": "query",
             "description": "Enable or Disable a user, only a SA or admin can do this",
@@ -5796,6 +5634,22 @@
         }
       }
     },
+    "MessageResponse": {
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Message"
+          }
+        }
+      }
+    },
     "AsyncMessage": {
       "properties": {
         "dataReceived": {
@@ -5827,22 +5681,6 @@
         },
         "total": {
           "type": "string"
-        }
-      }
-    },
-    "MessageResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "messages": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Message"
-          }
         }
       }
     },
@@ -6360,12 +6198,6 @@
       "properties": {
         "application": {
           "$ref": "#/definitions/Application"
-        },
-        "applications": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Application"
-          }
         },
         "error": {
           "type": "string"
