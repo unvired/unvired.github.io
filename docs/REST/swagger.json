@@ -5042,13 +5042,6 @@
             "type": "string"
           },
           {
-            "name": "mailId",
-            "in": "query",
-            "description": "Email Id of the  user to create",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "status",
             "in": "query",
             "description": "Enable or Disable a user, only a SA or admin can do this",
