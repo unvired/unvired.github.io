@@ -9,13 +9,14 @@ Welcome to the Unvired Developer Portal.
 <div class="message">
 <strong>Developer Documentation: </strong><a href="https://unvired.atlassian.net/wiki/display/DG" target="_blank">Unvired Development Guide</a>
 <br><br>
-<strong>REST API Current</strong>
+<strong><u>REST API Current</u></strong>
+<br>
 <strong>UMP v4 REST API / Swagger Documentation: </strong><a href="http://developer.unvired.com/docs/REST/" target="_blank">UMP v4 REST API Reference</a>
 <br>
 <strong>UMP v4 Swagger Definition File: </strong><a href="http://developer.unvired.com/docs/REST/swagger.json" target="_blank">Swagger REST API JSON Definition for UMP v4</a>
 <br>
 <br>
-<strong>REST API Previous Versions</strong>
+<strong><u>REST API Previous Versions</u></strong>
 <br>
 <strong>UMP v3 REST API / Swagger Documentation: </strong><a href="http://developer.unvired.com/docs/REST/indexv3.html" target="_blank">UMP v3 REST API Reference</a>
 <br>
@@ -23,7 +24,7 @@ Welcome to the Unvired Developer Portal.
 </div>
 
 <div class="message">
-<strong>Other Documents</strong>
+<strong><u>Other Documents</u></strong>
 <br>
 <strong>Administration Guide: </strong><a href="https://unvired.atlassian.net/wiki/display/UAG" target="_blank">Unvired Administration Guide</a>
 <br>
