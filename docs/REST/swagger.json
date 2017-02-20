@@ -1899,6 +1899,273 @@
         ]
       }
     },
+    "/API/v2/applications/{appName}/secret/{key}": {
+      "get": {
+        "tags": [
+          "applications"
+        ],
+        "summary": "Retrieve secret for an Application",
+        "description": "Retrieve specified secret for an Application. Any application user can access this API",
+        "operationId": "getSecretUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "path",
+            "description": "Application to retrieve secret",
+            "required": true,
+            "type": "string",
+            "default": "*"
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "description": "Secret/Key to retrieve",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Applciation secret retrieved",
+            "schema": {
+              "$ref": "#/definitions/ApplicationSecretResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Incorrect password/authkey, password expired or REST API disabled"
+          },
+          "403": {
+            "description": "Company plan has expired or does not have a valid plan"
+          },
+          "404": {
+            "description": "Application or key not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "applications"
+        ],
+        "summary": "Create or Update secret for an Application",
+        "description": "Update secret for an Application. Any application user can access this API",
+        "operationId": "createSecretUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "path",
+            "description": "Application to retrieve secret",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "description": "Secret/Key to retrieve",
+            "required": true,
+            "type": "string",
+            "default": "*"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "description": "Value to store",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Application setting created",
+            "schema": {
+              "$ref": "#/definitions/ApplicationSecretResponse"
+            }
+          },
+          "204": {
+            "description": "Application settings updated",
+            "schema": {
+              "$ref": "#/definitions/ApplicationSecretResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Incorrect password/authkey, password expired or REST API disabled"
+          },
+          "403": {
+            "description": "Company plan has expired or does not have a valid plan"
+          },
+          "404": {
+            "description": "Application or key not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "applications"
+        ],
+        "summary": "Create or Update secret for an Application",
+        "description": "Update secret for an Application. Any application user can access this API",
+        "operationId": "createSecretUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "path",
+            "description": "Application to retrieve secret",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "description": "Secret/Key to retrieve",
+            "required": true,
+            "type": "string",
+            "default": "*"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "description": "Value to store",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Application setting created",
+            "schema": {
+              "$ref": "#/definitions/ApplicationSecretResponse"
+            }
+          },
+          "204": {
+            "description": "Application settings updated",
+            "schema": {
+              "$ref": "#/definitions/ApplicationSecretResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Incorrect password/authkey, password expired or REST API disabled"
+          },
+          "403": {
+            "description": "Company plan has expired or does not have a valid plan"
+          },
+          "404": {
+            "description": "Application or key not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "applications"
+        ],
+        "summary": "Delete secret for an Application",
+        "description": "Delete secret for an Application. Any application user can access this API",
+        "operationId": "deleteSecretUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "path",
+            "description": "Application to delete secret",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "description": "Secret/Key to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Application secret deleted",
+            "schema": {
+              "$ref": "#/definitions/ApplicationSecretResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Incorrect password/authkey, password expired or REST API disabled"
+          },
+          "403": {
+            "description": "Company plan has expired or does not have a valid plan"
+          },
+          "404": {
+            "description": "Application or key not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
     "/API/v2/applications/{appName}/settings/{key}": {
       "get": {
         "tags": [
@@ -5708,6 +5975,22 @@
         }
       }
     },
+    "ApplicationSecretResponse": {
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "secrets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Secret"
+          }
+        }
+      }
+    },
     "AttachmentResponse": {
       "properties": {
         "attachmentId": {
@@ -5910,6 +6193,16 @@
           "type": "string"
         },
         "url": {
+          "type": "string"
+        }
+      }
+    },
+    "Secret": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
           "type": "string"
         }
       }
