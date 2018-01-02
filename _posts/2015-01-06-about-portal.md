@@ -15,7 +15,9 @@ Welcome to the Unvired Developer Portal.
 <br><br>
 <strong><u>REST API Current</u></strong>
 <br>
-<strong>UMP v4 REST API / Swagger Documentation: </strong><a href="http://developer.unvired.com/docs/REST/" target="_blank">UMP v4 REST API Reference</a>
+<strong>UMP v4 REST API Documentation: </strong><a href="https://unvired.atlassian.net/wiki/spaces/UNVIRED/pages/143753328/UMP+REST+API+Guide" target="_blank">UMP v4 REST API Guide</a>
+<br>
+<strong>UMP v4 REST API Swagger Online: </strong><a href="http://developer.unvired.com/docs/REST/" target="_blank">UMP v4 REST API Swagger IDE</a>
 <br>
 <strong>UMP v4 Swagger Definition File: </strong><a href="http://developer.unvired.com/docs/REST/swagger.json" target="_blank">Swagger REST API JSON Definition for UMP v4</a>
 <br>
