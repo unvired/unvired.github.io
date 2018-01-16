@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Unvired Mobile Platform Rest API. API Authentication is HTTP BASIC Auth, the user should be passed in as COMPANY\\USER. Note: Due to an issue with the way the docs are generated, the response object is not generated correctly.  Until the upstream provider corrects it please check actual responses.",
-    "version": "V2 (Release 2017)",
+    "version": "V2 (Release 2016)",
     "title": "The UMP4 Rest API",
     "contact": {
       "name": "Unvired Inc."
@@ -1368,6 +1368,145 @@
         ]
       }
     },
+    "/API/v2/applications/{appName}/passwordless": {
+      "post": {
+        "tags": [
+          "applications"
+        ],
+        "summary": "Returns a one time / single use login token for the Application",
+        "description": "Returns a single use / one time token to login to the Application without a password for the Unvired User. Any valid application user can access this API",
+        "operationId": "getOneTimeLoginTokenUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "path",
+            "description": "Application to login to",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "client",
+            "in": "query",
+            "description": "Login from web or mobile",
+            "required": false,
+            "type": "string",
+            "default": "mobile",
+            "enum": [
+              "web",
+              "mobile"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "One time token login token issued",
+            "schema": {
+              "$ref": "#/definitions/PasswordlessResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Incorrect password/authkey, password expired or REST API disabled"
+          },
+          "403": {
+            "description": "Company plan has expired or does not have a valid plan"
+          },
+          "404": {
+            "description": "Application or user not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/API/v2/applications/{appName}/passwordless/{loginToken}": {
+      "get": {
+        "tags": [
+          "applications"
+        ],
+        "summary": "Validates a one time / single use login token for the Application",
+        "description": "Validates a single use / one time token to login to the Application. Any valid application user can access this API",
+        "operationId": "validateOneTimeLoginTokenUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "path",
+            "description": "Application to login to",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "loginToken",
+            "in": "path",
+            "description": "Login token to validate",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startSession",
+            "in": "query",
+            "description": "Start a new session after validation and return the session id",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authenticated",
+            "schema": {
+              "$ref": "#/definitions/PasswordlessResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Incorrect password/authkey, password expired or REST API disabled"
+          },
+          "403": {
+            "description": "Company plan has expired or does not have a valid plan"
+          },
+          "404": {
+            "description": "Application or user not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
     "/API/v2/applications/{appName}/properties": {
       "get": {
         "tags": [
@@ -1521,7 +1660,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Application Property updated",
+            "description": "Applciation Property updated",
             "schema": {
               "$ref": "#/definitions/ApplicationPropertiesResponse"
             }
@@ -5002,6 +5141,18 @@
               "false",
               "true"
             ]
+          },
+          {
+            "name": "strict",
+            "in": "query",
+            "description": "Should the email and username be verified?  If true, strict validation will be done",
+            "required": false,
+            "type": "boolean",
+            "default": true,
+            "enum": [
+              "false",
+              "true"
+            ]
           }
         ],
         "responses": {
@@ -5414,8 +5565,8 @@
         "tags": [
           "users"
         ],
-        "summary": "Create Backend User",
-        "description": "Create a new Backend User for the Unvired user. Super Admin or Administrator of the root company (disallowed in High Security mode) or the current company can access this API",
+        "summary": "Create / Update Backend User",
+        "description": "Create a new backend user or update the backend password for the Unvired user. Super Admin or Administrator of the root company (disallowed in High Security mode) or the current company can access this API",
         "operationId": "createBackendUserUsingPOST",
         "consumes": [
           "application/json"
@@ -5462,6 +5613,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Backend User updated",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          },
           "201": {
             "description": "Backend User created",
             "schema": {
@@ -6488,6 +6645,9 @@
         "lastName": {
           "type": "string"
         },
+        "profileId": {
+          "type": "string"
+        },
         "status": {
           "type": "string"
         },
@@ -6692,6 +6852,46 @@
           "type": "string"
         },
         "name": {
+          "type": "string"
+        }
+      }
+    },
+    "PasswordlessResponse": {
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "loginToken": {
+          "type": "string"
+        },
+        "loginValidated": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        },
+        "mobileAppRedirectURL": {
+          "type": "string"
+        },
+        "profileId": {
+          "type": "string"
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "validationMessage": {
           "type": "string"
         }
       }
