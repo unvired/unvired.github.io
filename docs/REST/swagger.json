@@ -16,16 +16,24 @@
   "basePath": "/UMP",
   "tags": [
     {
+      "name": "applications",
+      "description": "Operations on Application(s)"
+    },
+    {
+      "name": "attachments",
+      "description": "Operations on Attachments (files in cache)"
+    },
+    {
+      "name": "companies",
+      "description": "Operations on a Company"
+    },
+    {
       "name": "groups",
       "description": "Operations on Group(s)"
     },
     {
-      "name": "status",
-      "description": "Platform Status"
-    },
-    {
-      "name": "applications",
-      "description": "Operations on Application(s)"
+      "name": "libraries",
+      "description": "Operations on a Library"
     },
     {
       "name": "messages",
@@ -36,20 +44,12 @@
       "description": "Session management for Users"
     },
     {
-      "name": "libraries",
-      "description": "Operations on a Library"
+      "name": "status",
+      "description": "Platform Status"
     },
     {
       "name": "users",
       "description": "Operations on User(s)"
-    },
-    {
-      "name": "attachments",
-      "description": "Operations on Attachments (files in cache)"
-    },
-    {
-      "name": "companies",
-      "description": "Operations on a Company"
     }
   ],
   "schemes": [
@@ -65,9 +65,6 @@
         "summary": "Returns the list of Applications",
         "description": "Returns the list of applications of a company. Any valid user of a company can access this API",
         "operationId": "getApplicationListUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -99,7 +96,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}": {
@@ -110,9 +108,6 @@
         "summary": "Returns the Application details ",
         "description": "Returns the Application details.  Any valid user of a company can access this API",
         "operationId": "getApplicationInfoUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -153,7 +148,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/activate/{frontendUser}": {
@@ -214,7 +210,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/assign": {
@@ -225,9 +222,6 @@
         "summary": "Gets application assignment status",
         "description": "Gets the application assignment status. Super Admin or Administrator of the current company can access this API",
         "operationId": "getAssignedAppStatusUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -268,7 +262,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -320,7 +315,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/attachments/{attachmentId}": {
@@ -331,9 +327,6 @@
         "summary": "Download attachment/file from the UMP cache",
         "description": "Downloads (multipart mime) an attachment/file from the UMP cache. This file can then be accessed by the application for download to a mobile device or other destinations.  Any Application user of the current company can access this API",
         "operationId": "downloadAttachmentUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/octet-stream",
@@ -341,16 +334,16 @@
         ],
         "parameters": [
           {
-            "name": "attachmentId",
+            "name": "appName",
             "in": "path",
-            "description": "Attachment Id of the file to download, has to be a GUID",
+            "description": "Application name associated with the attachment",
             "required": true,
             "type": "string"
           },
           {
-            "name": "appName",
+            "name": "attachmentId",
             "in": "path",
-            "description": "Application name associated with the attachment",
+            "description": "Attachment Id of the file to download, has to be a GUID",
             "required": true,
             "type": "string"
           },
@@ -389,7 +382,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -407,16 +401,16 @@
         ],
         "parameters": [
           {
-            "name": "attachmentId",
+            "name": "appName",
             "in": "path",
-            "description": "Attachment Id of the uploaded file, has to be a GUID",
+            "description": "Application name requiring the attachment",
             "required": true,
             "type": "string"
           },
           {
-            "name": "appName",
+            "name": "attachmentId",
             "in": "path",
-            "description": "Application name requiring the attachment",
+            "description": "Attachment Id of the uploaded file, has to be a GUID",
             "required": true,
             "type": "string"
           },
@@ -452,7 +446,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/authenticate/{frontendUser}": {
@@ -463,9 +458,6 @@
         "summary": "Authenticate an Application",
         "description": "Authenticate an Application for the Unvired User / Frontend User or Device. Any valid application user can access this API",
         "operationId": "authenticateUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -513,7 +505,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/copy": {
@@ -524,9 +517,6 @@
         "summary": "Gets application copy status",
         "description": "Gets the application copy status. Super Admin or Administrator of the current company can access this API",
         "operationId": "getCopiedAppStatusUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -567,7 +557,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -619,7 +610,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/deploy/{frontendUser}": {
@@ -680,7 +672,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/execute/{funcName}": {
@@ -700,20 +693,6 @@
         ],
         "parameters": [
           {
-            "name": "appName",
-            "in": "path",
-            "description": "Application that the function belongs to",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "funcName",
-            "in": "path",
-            "description": "Function to execute",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "Content-Type",
             "in": "header",
             "description": "Input Message Content Type",
@@ -724,6 +703,41 @@
               "application/xml",
               "application/json"
             ]
+          },
+          {
+            "name": "appName",
+            "in": "path",
+            "description": "Application that the function belongs to",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "credentials",
+            "in": "query",
+            "description": "System credentials for backend systems, JSON format [{ \"port\": \"LOGICAL_PORT_NAME\", \"user\": \"USER_NAME\", \"password\": \"PASSWORD\"}]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "externalReference",
+            "in": "query",
+            "description": "Optional external reference id to associate with the message, mandatory if queued request (async)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "frontendUser",
+            "in": "query",
+            "description": "Frontend user or device requesting the execution, if only one frontend user us present this parameter is optional",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "funcName",
+            "in": "path",
+            "description": "Function to execute",
+            "required": true,
+            "type": "string"
           },
           {
             "name": "inputMessage",
@@ -745,9 +759,9 @@
             ]
           },
           {
-            "name": "frontendUser",
+            "name": "portName",
             "in": "query",
-            "description": "Frontend user or device requesting the execution, if only one frontend user us present this parameter is optional",
+            "description": "If the type of user is backendUser, then the UMP logical name of the port (system) these users belong to is specified here",
             "required": false,
             "type": "string"
           },
@@ -762,27 +776,6 @@
               "true",
               "false"
             ]
-          },
-          {
-            "name": "externalReference",
-            "in": "query",
-            "description": "Optional external reference id to associate with the message, mandatory if queued request (async)",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "portName",
-            "in": "query",
-            "description": "If the type of user is backendUser, then the UMP logical name of the port (system) these users belong to is specified here",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "credentials",
-            "in": "query",
-            "description": "System credentials for backend systems, JSON format [{ \"port\": \"LOGICAL_PORT_NAME\", \"user\": \"USER_NAME\", \"password\": \"PASSWORD\"}]",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
@@ -824,7 +817,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/executefor/{funcName}": {
@@ -844,20 +838,6 @@
         ],
         "parameters": [
           {
-            "name": "appName",
-            "in": "path",
-            "description": "Application that the function belongs to",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "funcName",
-            "in": "path",
-            "description": "Function to execute",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "Content-Type",
             "in": "header",
             "description": "Input Message Content Type",
@@ -868,6 +848,41 @@
               "application/xml",
               "application/json"
             ]
+          },
+          {
+            "name": "appName",
+            "in": "path",
+            "description": "Application that the function belongs to",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "externalReference",
+            "in": "query",
+            "description": "External reference id to associate with the message",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "frontendUser",
+            "in": "query",
+            "description": "Frontend user requesting the execution, if only one frontend user is present this parameter is optional.  (user has to be of type External Server)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "funcName",
+            "in": "path",
+            "description": "Function to execute",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "groups",
+            "in": "query",
+            "description": "Comma separated list of groups",
+            "required": false,
+            "type": "string"
           },
           {
             "name": "inputMessage",
@@ -889,9 +904,9 @@
             ]
           },
           {
-            "name": "frontendUser",
+            "name": "portName",
             "in": "query",
-            "description": "Frontend user requesting the execution, if only one frontend user is present this parameter is optional.  (user has to be of type External Server)",
+            "description": "If the type of user is backendUser, then the UMP logical name of the port (system) these users belong to is specified here",
             "required": false,
             "type": "string"
           },
@@ -915,27 +930,6 @@
             "description": "Comma separated list of users based on the userType",
             "required": false,
             "type": "string"
-          },
-          {
-            "name": "groups",
-            "in": "query",
-            "description": "Comma separated list of groups",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "portName",
-            "in": "query",
-            "description": "If the type of user is backendUser, then the UMP logical name of the port (system) these users belong to is specified here",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "externalReference",
-            "in": "query",
-            "description": "External reference id to associate with the message",
-            "required": true,
-            "type": "string"
           }
         ],
         "responses": {
@@ -977,7 +971,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/frontendusers/{frontendUser}/messagecount": {
@@ -988,9 +983,6 @@
         "summary": "Get message count",
         "description": "Gets the count of ready and pending messages. Any application user can access this API",
         "operationId": "getReadyPendingMsgCountUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -1038,7 +1030,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/frontendusers/{frontendUser}/registerforpush/{pushId}": {
@@ -1106,7 +1099,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -1115,9 +1109,6 @@
         "summary": "Deregister for Push notifications",
         "description": "Deregister for Push notifications for an Application. Any application user can access this API",
         "operationId": "deletePushRegisterUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -1172,7 +1163,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/library/{libName}": {
@@ -1239,7 +1231,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -1248,9 +1241,6 @@
         "summary": "Deploy a library for an application",
         "description": "Deploy a library for an application. In a Development environment Super Admin,Administrator or Developer of the current company can access this API. In Production environment Super Admin or Administrator of the current company can access this API",
         "operationId": "unDeployLibraryUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -1298,7 +1288,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/message/{frontendUser}": {
@@ -1309,9 +1300,6 @@
         "summary": "Dowload message",
         "description": "Download message that is ready on UMP for an Application. Any application user can access this API",
         "operationId": "downloadMessageUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -1365,7 +1353,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/passwordless": {
@@ -1431,7 +1420,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/passwordless/{loginToken}": {
@@ -1442,9 +1432,6 @@
         "summary": "Validates a one time / single use login token for the Application",
         "description": "Validates a single use / one time token to login to the Application. Any valid application user can access this API",
         "operationId": "validateOneTimeLoginTokenUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -1504,7 +1491,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/properties": {
@@ -1515,9 +1503,6 @@
         "summary": "Retrieve all the properties for an Application",
         "description": "Retrieve all the properties for an Application. Properties are preconfigured by the administrator of UMP. Any application user can access this API",
         "operationId": "getApplicationPropertiesUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -1558,7 +1543,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/properties/{property}": {
@@ -1569,9 +1555,6 @@
         "summary": "Retrieve specific property for an Application",
         "description": "Retrieve specific property for an Application. Properties are preconfigured by the administrator of UMP. Any application user can access this API",
         "operationId": "getApplicationPropertyUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -1619,7 +1602,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -1685,7 +1669,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "put": {
         "tags": [
@@ -1751,7 +1736,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/pushmessage": {
@@ -1771,13 +1757,6 @@
         ],
         "parameters": [
           {
-            "name": "appName",
-            "in": "path",
-            "description": "Application to push message",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "Content-Type",
             "in": "header",
             "description": "Input Message Content Type",
@@ -1788,6 +1767,41 @@
               "application/xml",
               "application/json"
             ]
+          },
+          {
+            "name": "alert",
+            "in": "query",
+            "description": "Alert (Push Notification) message that is displayed to the user when this message is delivered.  If not set notification to download updates will be displayed",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "appName",
+            "in": "path",
+            "description": "Application to push message",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "externalReference",
+            "in": "query",
+            "description": "Optional external reference id to associate with the message",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "frontendUser",
+            "in": "query",
+            "description": "Frontend user requesting the execution, if only one frontend user is present this parameter is optional",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "groups",
+            "in": "query",
+            "description": "Comma separated list of groups",
+            "required": false,
+            "type": "string"
           },
           {
             "name": "inputMessage",
@@ -1808,9 +1822,9 @@
             ]
           },
           {
-            "name": "alert",
+            "name": "portName",
             "in": "query",
-            "description": "Alert (Push Notification) message that is displayed to the user when this message is delivered.  If not set notification to download updates will be displayed",
+            "description": "If the type of user is backendUser, then the UMP logical name of the port (system) these users belong to is specified here",
             "required": false,
             "type": "string"
           },
@@ -1832,34 +1846,6 @@
             "name": "users",
             "in": "query",
             "description": "Comma separated list of users based on the userType",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "groups",
-            "in": "query",
-            "description": "Comma separated list of groups",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "portName",
-            "in": "query",
-            "description": "If the type of user is backendUser, then the UMP logical name of the port (system) these users belong to is specified here",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "externalReference",
-            "in": "query",
-            "description": "Optional external reference id to associate with the message",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "frontendUser",
-            "in": "query",
-            "description": "Frontend user requesting the execution, if only one frontend user is present this parameter is optional",
             "required": false,
             "type": "string"
           }
@@ -1897,7 +1883,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/pushnotification": {
@@ -1917,17 +1904,10 @@
         ],
         "parameters": [
           {
-            "name": "appName",
-            "in": "path",
-            "description": "Application to push notification",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "title",
+            "name": "action",
             "in": "query",
-            "description": "Notification Title",
-            "required": true,
+            "description": "Notification action",
+            "required": false,
             "type": "string"
           },
           {
@@ -1938,17 +1918,10 @@
             "type": "string"
           },
           {
-            "name": "sound",
-            "in": "query",
-            "description": "Sound to play for the notification",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "action",
-            "in": "query",
-            "description": "Notification action",
-            "required": false,
+            "name": "appName",
+            "in": "path",
+            "description": "Application to push notification",
+            "required": true,
             "type": "string"
           },
           {
@@ -1963,6 +1936,41 @@
             "in": "query",
             "description": "Notification context, can be any small string of data that the client applicaiton can use to associate the data and the notification",
             "required": false,
+            "type": "string"
+          },
+          {
+            "name": "frontendUser",
+            "in": "query",
+            "description": "Frontend user requesting the execution, if only one frontend user is present this parameter is optional",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "groups",
+            "in": "query",
+            "description": "Comma separated list of groups",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "portName",
+            "in": "query",
+            "description": "If the type of user is backendUser, then the UMP logical name of the port (system) these users belong to is specified here",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sound",
+            "in": "query",
+            "description": "Sound to play for the notification",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "description": "Notification Title",
+            "required": true,
             "type": "string"
           },
           {
@@ -1983,27 +1991,6 @@
             "name": "users",
             "in": "query",
             "description": "Comma separated list of users based on the userType",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "groups",
-            "in": "query",
-            "description": "Comma separated list of groups",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "portName",
-            "in": "query",
-            "description": "If the type of user is backendUser, then the UMP logical name of the port (system) these users belong to is specified here",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "frontendUser",
-            "in": "query",
-            "description": "Frontend user requesting the execution, if only one frontend user is present this parameter is optional",
             "required": false,
             "type": "string"
           }
@@ -2035,7 +2022,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/secret/{key}": {
@@ -2046,9 +2034,6 @@
         "summary": "Retrieve secret for an Application",
         "description": "Retrieve specified secret for an Application. Any application user can access this API",
         "operationId": "getSecretUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -2097,7 +2082,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -2170,7 +2156,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "put": {
         "tags": [
@@ -2243,7 +2230,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -2252,9 +2240,6 @@
         "summary": "Delete secret for an Application",
         "description": "Delete secret for an Application. Any application user can access this API",
         "operationId": "deleteSecretUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -2302,7 +2287,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/settings/{key}": {
@@ -2313,9 +2299,6 @@
         "summary": "Retrieve setting for an Application",
         "description": "Retrieve specific setting for an Application (Specify key as * to fetch all). Any application user can access this API",
         "operationId": "getSettingsUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -2364,7 +2347,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -2389,6 +2373,18 @@
             "type": "string"
           },
           {
+            "name": "hidden",
+            "in": "query",
+            "description": "Hidden settings are not displayed ",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
+          },
+          {
             "name": "key",
             "in": "path",
             "description": "Setting/Key to retrieve",
@@ -2397,11 +2393,16 @@
             "default": "*"
           },
           {
-            "name": "value",
+            "name": "mobileSetting",
             "in": "query",
-            "description": "Value to store",
-            "required": true,
-            "type": "string"
+            "description": "Setting to be created as mobile setting",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
           },
           {
             "name": "secure",
@@ -2416,28 +2417,11 @@
             ]
           },
           {
-            "name": "hidden",
+            "name": "value",
             "in": "query",
-            "description": "Hidden settings are not displayed ",
-            "required": false,
-            "type": "string",
-            "default": "false",
-            "enum": [
-              "true",
-              "false"
-            ]
-          },
-          {
-            "name": "mobileSetting",
-            "in": "query",
-            "description": "Setting to be created as mobile setting",
-            "required": false,
-            "type": "string",
-            "default": "false",
-            "enum": [
-              "true",
-              "false"
-            ]
+            "description": "Value to store",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -2473,7 +2457,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "put": {
         "tags": [
@@ -2498,6 +2483,18 @@
             "type": "string"
           },
           {
+            "name": "hidden",
+            "in": "query",
+            "description": "Hidden settings are not displayed ",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
+          },
+          {
             "name": "key",
             "in": "path",
             "description": "Setting/Key to retrieve",
@@ -2506,11 +2503,16 @@
             "default": "*"
           },
           {
-            "name": "value",
+            "name": "mobileSetting",
             "in": "query",
-            "description": "Value to store",
-            "required": true,
-            "type": "string"
+            "description": "Setting to be created as mobile setting",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
           },
           {
             "name": "secure",
@@ -2525,28 +2527,11 @@
             ]
           },
           {
-            "name": "hidden",
+            "name": "value",
             "in": "query",
-            "description": "Hidden settings are not displayed ",
-            "required": false,
-            "type": "string",
-            "default": "false",
-            "enum": [
-              "true",
-              "false"
-            ]
-          },
-          {
-            "name": "mobileSetting",
-            "in": "query",
-            "description": "Setting to be created as mobile setting",
-            "required": false,
-            "type": "string",
-            "default": "false",
-            "enum": [
-              "true",
-              "false"
-            ]
+            "description": "Value to store",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -2582,7 +2567,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -2591,9 +2577,6 @@
         "summary": "Delete setting for an Application",
         "description": "Delete setting for an Application. Any application user can access this API",
         "operationId": "deleteSettingsUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -2641,7 +2624,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/undeploy/{frontendUser}": {
@@ -2652,9 +2636,6 @@
         "summary": "Undeploy an Application",
         "description": "Undeploy an Application for the Unvired User / Frontend User or Device. Super Admin or Administrator of the current company can access this API",
         "operationId": "undeployAppUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -2702,7 +2683,105 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
+      }
+    },
+    "/API/v2/applications/{appName}/usage": {
+      "get": {
+        "tags": [
+          "applications"
+        ],
+        "summary": "Returns the usage details of an Application",
+        "description": "Returns the usage of an application of a company. Any valid user of a company can access this API",
+        "operationId": "getApplicationUsageUsingGET",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "path",
+            "description": "appName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "company",
+            "in": "query",
+            "description": "Company to fetch the users, if empty authentication company is used",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "fromTime",
+            "in": "query",
+            "description": "Start time for fetching the usage logs, default logs for last 1 hour",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit the number of usage logs returned",
+            "required": false,
+            "type": "integer",
+            "default": 25,
+            "exclusiveMaximum": false,
+            "minimum": 1,
+            "exclusiveMinimum": false,
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset from which to return the usage logs",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "exclusiveMaximum": false,
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "format": "int32"
+          },
+          {
+            "name": "toTime",
+            "in": "query",
+            "description": "End time for fetching the usage logs",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Application list returned",
+            "schema": {
+              "$ref": "#/definitions/StatusResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Incorrect password/authkey, password expired or REST API disabled"
+          },
+          "403": {
+            "description": "Company plan has expired or does not have a valid plan"
+          },
+          "404": {
+            "description": "Company or User not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/users": {
@@ -2713,9 +2792,6 @@
         "summary": "Get users deployment status for an application",
         "description": "Gets the users deployment status for an application. Super Admin or Administrator of the current company can access this API",
         "operationId": "getApplicationUsersUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -2727,6 +2803,30 @@
             "description": "Application to check",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit the number of users returned",
+            "required": false,
+            "type": "integer",
+            "default": 25,
+            "exclusiveMaximum": false,
+            "minimum": 1,
+            "exclusiveMinimum": false,
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset from which to return the users",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "exclusiveMaximum": false,
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "format": "int32"
           },
           {
             "name": "status",
@@ -2741,23 +2841,6 @@
               "ACTIVATED",
               "ERROR"
             ]
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Limit the number of users returned",
-            "required": false,
-            "type": "integer",
-            "default": 25,
-            "format": "int32"
-          },
-          {
-            "name": "offset",
-            "in": "query",
-            "description": "Offset from which to return the users",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
           }
         ],
         "responses": {
@@ -2787,7 +2870,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/applications/{appName}/usersettings/{key}": {
@@ -2798,9 +2882,6 @@
         "summary": "Retrieve User specific settings for an Application",
         "description": "Retrieve User specific settings (specify key as * to fetch all) for an Application / Unvired User. Any application user can access this API",
         "operationId": "getUserSettingsUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -2849,7 +2930,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -2874,16 +2956,21 @@
             "type": "string"
           },
           {
+            "name": "hidden",
+            "in": "query",
+            "description": "Hidden settings are not displayed ",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
+          },
+          {
             "name": "key",
             "in": "path",
             "description": "Setting / Key to create or modify",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "value",
-            "in": "query",
-            "description": "Value to store",
             "required": true,
             "type": "string"
           },
@@ -2900,16 +2987,11 @@
             ]
           },
           {
-            "name": "hidden",
+            "name": "value",
             "in": "query",
-            "description": "Hidden settings are not displayed ",
-            "required": false,
-            "type": "string",
-            "default": "false",
-            "enum": [
-              "true",
-              "false"
-            ]
+            "description": "Value to store",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -2945,7 +3027,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "put": {
         "tags": [
@@ -2970,16 +3053,21 @@
             "type": "string"
           },
           {
+            "name": "hidden",
+            "in": "query",
+            "description": "Hidden settings are not displayed ",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "true",
+              "false"
+            ]
+          },
+          {
             "name": "key",
             "in": "path",
             "description": "Setting / Key to create or modify",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "value",
-            "in": "query",
-            "description": "Value to store",
             "required": true,
             "type": "string"
           },
@@ -2996,16 +3084,11 @@
             ]
           },
           {
-            "name": "hidden",
+            "name": "value",
             "in": "query",
-            "description": "Hidden settings are not displayed ",
-            "required": false,
-            "type": "string",
-            "default": "false",
-            "enum": [
-              "true",
-              "false"
-            ]
+            "description": "Value to store",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -3041,7 +3124,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -3050,9 +3134,6 @@
         "summary": "Delete User specific settings for an Application",
         "description": "Delete User specific settings for an Application / Unvired User. Any application user can access this API",
         "operationId": "deleteUserSettingsUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -3100,7 +3181,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/attachments/{attachmentId}": {
@@ -3111,9 +3193,6 @@
         "summary": "Delete attachment/file in the UMP cache",
         "description": "Delete an attachment/file in the UMP cache. Any Application user of the current company can access this API",
         "operationId": "deleteAttachmentUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -3154,7 +3233,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/companies": {
@@ -3165,9 +3245,6 @@
         "summary": "List all Unvired Companies ",
         "description": "Returns a list of all available Unvired Companies.  Super Admin or Admin of root company can access this API",
         "operationId": "getCompaniesUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -3196,7 +3273,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -3214,6 +3292,34 @@
         ],
         "parameters": [
           {
+            "name": "address",
+            "in": "query",
+            "description": "Address",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "bucketkey",
+            "in": "query",
+            "description": "Company Bucket Key in case of AWS or Google Edition",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "bucketname",
+            "in": "query",
+            "description": "Company Bucket Name in case of AWS or Google Edition",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "description": "City",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "company",
             "in": "query",
             "description": "Company to create",
@@ -3228,27 +3334,6 @@
             "type": "string"
           },
           {
-            "name": "address",
-            "in": "query",
-            "description": "Address",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "city",
-            "in": "query",
-            "description": "City",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "state",
-            "in": "query",
-            "description": "State",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "country",
             "in": "query",
             "description": "Country",
@@ -3256,9 +3341,9 @@
             "type": "string"
           },
           {
-            "name": "zipcode",
+            "name": "folder",
             "in": "query",
-            "description": "Zip Code",
+            "description": "Company Data Folder in case of Data Center Edition",
             "required": true,
             "type": "string"
           },
@@ -3270,30 +3355,23 @@
             "type": "string"
           },
           {
-            "name": "folder",
-            "in": "query",
-            "description": "Company Data Folder in case of Data Center Edition",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "bucketname",
-            "in": "query",
-            "description": "Company Bucket Name in case of AWS or Google Edition",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "bucketkey",
-            "in": "query",
-            "description": "Company Bucket Key in case of AWS or Google Edition",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "secret",
             "in": "query",
             "description": "Company Bucket password in case of AWS or Google Edition",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "State",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "zipcode",
+            "in": "query",
+            "description": "Zip Code",
             "required": true,
             "type": "string"
           }
@@ -3322,7 +3400,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/companies/{companyAlias}/groups/{groupName}/membership/{userName}": {
@@ -3333,9 +3412,6 @@
         "summary": "Remove membership of user from Group",
         "description": "Remove membership of user from Group of the specified company. Super Admin or Administrator of the root company can access this API (disallowed in High Security mode)",
         "operationId": "deleteGroupMemberUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -3387,7 +3463,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/companies/{companyAlias}/users/{userName}/backendusers/{backendUser}/ports/{portName}": {
@@ -3398,28 +3475,11 @@
         "summary": "Delete Backend User belonging to another company",
         "description": "Delete a Backend User for the Unvired user of another company. Only the Super Admin or Administrator of the root company can access this API (disallowed in High Security mode)",
         "operationId": "deleteBackendUserUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
         ],
         "parameters": [
-          {
-            "name": "companyAlias",
-            "in": "path",
-            "description": "Company user belongs to",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "userName",
-            "in": "path",
-            "description": "userName",
-            "required": true,
-            "type": "string"
-          },
           {
             "name": "backendUser",
             "in": "path",
@@ -3428,9 +3488,23 @@
             "type": "string"
           },
           {
+            "name": "companyAlias",
+            "in": "path",
+            "description": "Company user belongs to",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "portName",
             "in": "path",
             "description": "Port (System) that the backend user belongs to",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "path",
+            "description": "userName",
             "required": true,
             "type": "string"
           }
@@ -3462,7 +3536,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/companies/{companyAlias}/users/{userName}/federationusers/{federationUser}/applications/{appName}": {
@@ -3473,25 +3548,23 @@
         "summary": "Delete a Federation User belonging to other company",
         "description": "Delete a Federation User for the Unvired user of another company. Only the Super Admin or Administrator of the root company can access this API (disallowed in High Security mode)",
         "operationId": "deleteFederationUserUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
         ],
         "parameters": [
           {
+            "name": "appName",
+            "in": "path",
+            "description": "Application that the Federation User belongs to",
+            "required": true,
+            "type": "string",
+            "default": "ALL"
+          },
+          {
             "name": "companyAlias",
             "in": "path",
             "description": "Company user belongs to",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "userName",
-            "in": "path",
-            "description": "Unvired User that the Federation User belongs to",
             "required": true,
             "type": "string"
           },
@@ -3503,12 +3576,11 @@
             "type": "string"
           },
           {
-            "name": "appName",
+            "name": "userName",
             "in": "path",
-            "description": "Application that the Federation User belongs to",
+            "description": "Unvired User that the Federation User belongs to",
             "required": true,
-            "type": "string",
-            "default": "ALL"
+            "type": "string"
           }
         ],
         "responses": {
@@ -3544,7 +3616,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/companies/{companyAlias}/users/{userName}/frontendusers/{frontendUser}": {
@@ -3555,9 +3628,6 @@
         "summary": "Delete Frontend User or Device belonging to another company",
         "description": "Delete a Frontend User or Device for the Unvired user of another company. Only the Super Admin or Administrator of the root company can access this API (disallowed in High Security mode)",
         "operationId": "deleteFrontendUserUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -3571,16 +3641,16 @@
             "type": "string"
           },
           {
-            "name": "userName",
+            "name": "frontendUser",
             "in": "path",
-            "description": "Unvired User whose frontend user is to be deleted",
+            "description": "Frontend User to delete",
             "required": true,
             "type": "string"
           },
           {
-            "name": "frontendUser",
+            "name": "userName",
             "in": "path",
-            "description": "Frontend User to delete",
+            "description": "Unvired User whose frontend user is to be deleted",
             "required": true,
             "type": "string"
           }
@@ -3612,7 +3682,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/companies/{company}": {
@@ -3623,9 +3694,6 @@
         "summary": "Retrieve company information ",
         "description": "Retrieve the company information. Super Admin or Admin of root company or current company can access this API",
         "operationId": "getCompanyInfoUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -3663,7 +3731,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -3672,9 +3741,6 @@
         "summary": "Delete Company",
         "description": "Delete a company from a list of Unvired Companies.  Super Admin of root company can access this API",
         "operationId": "deleteCompanyUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -3718,7 +3784,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "patch": {
         "tags": [
@@ -3736,20 +3803,6 @@
         ],
         "parameters": [
           {
-            "name": "company",
-            "in": "path",
-            "description": "Company to update",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "companyName",
-            "in": "query",
-            "description": "Name of the company",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "address",
             "in": "query",
             "description": "Address",
@@ -3764,9 +3817,16 @@
             "type": "string"
           },
           {
-            "name": "state",
+            "name": "company",
+            "in": "path",
+            "description": "Company to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "companyName",
             "in": "query",
-            "description": "State",
+            "description": "Name of the company",
             "required": false,
             "type": "string"
           },
@@ -3778,16 +3838,23 @@
             "type": "string"
           },
           {
-            "name": "zipcode",
+            "name": "email",
             "in": "query",
-            "description": "Zip Code",
+            "description": "Email",
             "required": false,
             "type": "string"
           },
           {
-            "name": "email",
+            "name": "state",
             "in": "query",
-            "description": "Email",
+            "description": "State",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "zipcode",
+            "in": "query",
+            "description": "Zip Code",
             "required": false,
             "type": "string"
           }
@@ -3819,7 +3886,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/companies/{company}/plans": {
@@ -3830,9 +3898,6 @@
         "summary": "Retrieve all plans for a company",
         "description": "Retrieves all the plans (standard or custom) available for a company. Super Admin or Admin of root company can access this API",
         "operationId": "getPlansUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -3873,7 +3938,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/companies/{company}/plans/{planName}": {
@@ -3900,16 +3966,16 @@
             "type": "string"
           },
           {
-            "name": "planName",
-            "in": "path",
-            "description": "Plan name to activate",
+            "name": "from",
+            "in": "query",
+            "description": "Plan start date (mm/dd/yyyy)",
             "required": true,
             "type": "string"
           },
           {
-            "name": "from",
-            "in": "query",
-            "description": "Plan start date (mm/dd/yyyy)",
+            "name": "planName",
+            "in": "path",
+            "description": "Plan name to activate",
             "required": true,
             "type": "string"
           },
@@ -3948,7 +4014,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/companies/{company}/properties": {
@@ -3959,9 +4026,6 @@
         "summary": "List all Company Properties ",
         "description": "Returns a list of all available properties for that Company.  Super Admin or Admin of root company can access this API",
         "operationId": "getCompanyPropertiesUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -3999,7 +4063,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/groups": {
@@ -4010,9 +4075,6 @@
         "summary": "List all Groups ",
         "description": "Returns a list of all available Groups. Any valid user of current company or Super Admin or Admin of root company can access this API",
         "operationId": "getGroupsUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -4056,7 +4118,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -4081,16 +4144,16 @@
             "type": "string"
           },
           {
-            "name": "groupName",
+            "name": "description",
             "in": "query",
-            "description": "Name of the Group to create",
+            "description": "Description of the Group",
             "required": true,
             "type": "string"
           },
           {
-            "name": "description",
+            "name": "groupName",
             "in": "query",
-            "description": "Description of the Group",
+            "description": "Name of the Group to create",
             "required": true,
             "type": "string"
           }
@@ -4119,7 +4182,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/groups/{groupName}": {
@@ -4130,26 +4194,23 @@
         "summary": "Retrieve Group ",
         "description": "Returns the group information. Any valid user of a company can access this API",
         "operationId": "getGroupUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
         ],
         "parameters": [
           {
-            "name": "groupName",
-            "in": "path",
-            "description": "Group to fetch",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "company",
             "in": "query",
             "description": "Company to fetch the group, if empty authentication company is used",
             "required": false,
+            "type": "string"
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "description": "Group to fetch",
+            "required": true,
             "type": "string"
           }
         ],
@@ -4180,7 +4241,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "put": {
         "tags": [
@@ -4198,13 +4260,6 @@
         ],
         "parameters": [
           {
-            "name": "groupName",
-            "in": "path",
-            "description": "Group to update",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "company",
             "in": "query",
             "description": "Company to create the group, if empty authentication company is used",
@@ -4215,6 +4270,13 @@
             "name": "description",
             "in": "query",
             "description": "Description of the Group to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "description": "Group to update",
             "required": true,
             "type": "string"
           }
@@ -4246,7 +4308,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/groups/{groupName}/memberships": {
@@ -4266,17 +4329,17 @@
         ],
         "parameters": [
           {
-            "name": "groupName",
-            "in": "path",
-            "description": "Group to add member",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "company",
             "in": "query",
             "description": "Company to create the group, if empty authentication company is used",
             "required": false,
+            "type": "string"
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "description": "Group to add member",
+            "required": true,
             "type": "string"
           },
           {
@@ -4314,7 +4377,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/groups/{groupName}/memberships/{userName}": {
@@ -4325,9 +4389,6 @@
         "summary": "Remove membership of user from Group",
         "description": "Remove membership of user from Group. Super Admin or Administrator of the root company or the current company can access this API",
         "operationId": "deleteGroupMemberUsingDELETE_1",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -4375,7 +4436,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/libraries/{libName}": {
@@ -4386,9 +4448,6 @@
         "summary": "Returns the Library details",
         "description": "Returns the details about the Library. Any valid user of the current company can access this API",
         "operationId": "getLibraryInfoUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -4429,7 +4488,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/messages/conversation/{id}": {
@@ -4440,9 +4500,6 @@
         "summary": "Returns the status of the specified message (Conversation Id)",
         "description": "Returns the status of the message identified by its Conversation Id.  Any valid user of a company can access this API",
         "operationId": "getStatusByConversationUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -4483,7 +4540,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/messages/externalReference/{externalId}": {
@@ -4494,9 +4552,6 @@
         "summary": "Returns the status of the specified message (External Reference)",
         "description": "Returns the status of the specified message identified by the external reference number.  Any valid user of a company can access this API",
         "operationId": "getStatusByExternalReferenceUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -4537,7 +4592,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/messages/frontendusers/{frontendUser}/conversation/{id}": {
@@ -4548,9 +4604,6 @@
         "summary": "Confirms the download of the specified message (Conversation Id)",
         "description": "Confirms that the message identified by the Conversation Id has been successfully downloaded.  Confirmed messages will never be available for download again.  Any valid user of a company can access this API",
         "operationId": "deleteStatusByConversationUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -4598,7 +4651,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/session": {
@@ -4643,7 +4697,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/session/applications/{appName}": {
@@ -4704,7 +4759,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/session/{sessionId}": {
@@ -4715,9 +4771,6 @@
         "summary": "Logout from a session for Unvired User",
         "description": "Logout form an existing session for the Unvired user.  Every session create should have a callto session logout.  Any valid user of a company can access this API.",
         "operationId": "logoutSessionUsingDELETE",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -4758,7 +4811,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/status": {
@@ -4769,9 +4823,6 @@
         "summary": "Returns the UMP server Information",
         "description": "Returns detailed information about the UMP server. Administrators of a company can access this API",
         "operationId": "getUMPInfoUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -4784,6 +4835,7 @@
             "required": false,
             "type": "string",
             "default": "false",
+            "allowEmptyValue": false,
             "enum": [
               "true",
               "false"
@@ -4817,7 +4869,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/status/applications": {
@@ -4828,9 +4881,6 @@
         "summary": "Returns the list of Applications",
         "description": "Returns list of applications available for the company and detailed technical information about the application. Administrators of a company can access this API",
         "operationId": "getApplicationStatusUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -4862,7 +4912,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/status/applications/{appName}": {
@@ -4873,9 +4924,6 @@
         "summary": "Returns the detailed Application Status",
         "description": "Returns detailed information about the application like Users, Messages etc. Administrators of a company can access this API",
         "operationId": "getAppDetailedStatusUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -4916,7 +4964,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/status/notifications": {
@@ -4927,9 +4976,6 @@
         "summary": "Returns the Administrator Alerts",
         "description": "Returns the alerts/notifications for the logged in Administrator for the last 24 hours. Administrators of a company can access this API",
         "operationId": "getNotificationStatusUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -4961,7 +5007,37 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
+      }
+    },
+    "/API/v2/status/ping": {
+      "get": {
+        "tags": [
+          "status"
+        ],
+        "summary": "Ping the platform to determine platform health",
+        "description": "This API is to monitor the health of the UMP API and its system databases",
+        "operationId": "getPingUsingGET",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "System status fine",
+            "schema": {
+              "$ref": "#/definitions/StatusResponse"
+            }
+          },
+          "500": {
+            "description": "DB connection failed"
+          },
+          "501": {
+            "description": "Redis connection failed"
+          }
+        },
+        "deprecated": false
       }
     },
     "/API/v2/users": {
@@ -4972,9 +5048,6 @@
         "summary": "List all Unvired Users ",
         "description": "Returns a list of all available Unvired Users.  Any valid user of a company can access this API or SuperAdmin/Admin of the root company (disallowed in High Security mode)",
         "operationId": "getUsersUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -4986,6 +5059,30 @@
             "description": "Company to fetch the users, if empty authentication company is used",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit the number of users returned",
+            "required": false,
+            "type": "integer",
+            "default": 25,
+            "exclusiveMaximum": false,
+            "minimum": 1,
+            "exclusiveMinimum": false,
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset from which to return the users",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "exclusiveMaximum": false,
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "format": "int32"
           },
           {
             "name": "userType",
@@ -5000,23 +5097,6 @@
               "ADMIN",
               "SUPER_ADMIN"
             ]
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Limit the number of users returned",
-            "required": false,
-            "type": "integer",
-            "default": 25,
-            "format": "int32"
-          },
-          {
-            "name": "offset",
-            "in": "query",
-            "description": "Offset from which to return the users",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
           }
         ],
         "responses": {
@@ -5052,7 +5132,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -5077,20 +5158,6 @@
             "type": "string"
           },
           {
-            "name": "userName",
-            "in": "query",
-            "description": "Unvired User Name to create (should be between 5 to 20 characters)",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "in": "query",
-            "description": "Password to set, if not provided password is auto generated",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "firstName",
             "in": "query",
             "description": "First Name of the  user",
@@ -5101,6 +5168,59 @@
             "name": "lastName",
             "in": "query",
             "description": "Last Name of the  user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mailId",
+            "in": "query",
+            "description": "Email Id of the  user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "notifyUser",
+            "in": "query",
+            "description": "Notify the user via email",
+            "required": false,
+            "type": "boolean",
+            "default": false,
+            "x-example": false,
+            "enum": [
+              "false",
+              "true"
+            ]
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "Password to set, if not provided password is auto generated",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "Phone number of the  user",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "strict",
+            "in": "query",
+            "description": "Should the email and username be verified?  If true, strict validation will be done",
+            "required": false,
+            "type": "boolean",
+            "default": true,
+            "enum": [
+              "false",
+              "true"
+            ]
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "Unvired User Name to create (should be between 5 to 20 characters)",
             "required": true,
             "type": "string"
           },
@@ -5117,38 +5237,12 @@
             ]
           },
           {
-            "name": "phone",
-            "in": "query",
-            "description": "Phone number of the  user",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "mailId",
-            "in": "query",
-            "description": "Email Id of the  user",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "verifyEmail",
             "in": "query",
             "description": "Should the email be verified?  If true, an email with a one time token to verify the email will be sent",
             "required": false,
             "type": "string",
             "default": "false",
-            "enum": [
-              "false",
-              "true"
-            ]
-          },
-          {
-            "name": "strict",
-            "in": "query",
-            "description": "Should the email and username be verified?  If true, strict validation will be done",
-            "required": false,
-            "type": "boolean",
-            "default": true,
             "enum": [
               "false",
               "true"
@@ -5182,7 +5276,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/users/:me/changepassword": {
@@ -5243,7 +5338,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/users/:me/forgotpassword": {
@@ -5254,9 +5350,6 @@
         "summary": "Forgot Password",
         "description": "This API can be used to request a reset token (forgot password). The Company/User is provided via HTTP Basic Authentication, however the passsword is not validated and can be empty.  Only the current user can access this API",
         "operationId": "forgotUserPasswordUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -5288,7 +5381,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/users/:me/verifyEmail": {
@@ -5299,9 +5393,6 @@
         "summary": "Verify Email",
         "description": "This API can be used to request a verification email. Only the current user can access this API",
         "operationId": "sendVerifyEmailUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
@@ -5339,7 +5430,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -5388,7 +5480,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/users/{userName}": {
@@ -5399,14 +5492,18 @@
         "summary": "Retrieve Unvired User",
         "description": "Rrerieves the details of an Unvired User. If the userName passed is \":me\", the current user's details are fetched. The current user (can fetch own details only), Super Admin or Administrator of the root company (disallowed in High Security mode) or the current company (can fetch any user details) can access this API",
         "operationId": "getUserUsingGET",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
         ],
         "parameters": [
+          {
+            "name": "company",
+            "in": "query",
+            "description": "Company the user belongs to, if empty authentication company is used",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "userName",
             "in": "path",
@@ -5414,13 +5511,6 @@
             "required": true,
             "type": "string",
             "default": ":me"
-          },
-          {
-            "name": "company",
-            "in": "query",
-            "description": "Company the user belongs to, if empty authentication company is used",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
@@ -5450,7 +5540,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       },
       "patch": {
         "tags": [
@@ -5467,14 +5558,6 @@
           "application/json"
         ],
         "parameters": [
-          {
-            "name": "userName",
-            "in": "path",
-            "description": "Unvired User to modify",
-            "required": true,
-            "type": "string",
-            "default": ":me"
-          },
           {
             "name": "company",
             "in": "query",
@@ -5497,16 +5580,16 @@
             "type": "string"
           },
           {
-            "name": "phone",
+            "name": "mailId",
             "in": "query",
-            "description": "Phone number of the  user",
+            "description": "Email Id of the  user to create",
             "required": false,
             "type": "string"
           },
           {
-            "name": "mailId",
+            "name": "phone",
             "in": "query",
-            "description": "Email Id of the  user to create",
+            "description": "Phone number of the  user",
             "required": false,
             "type": "string"
           },
@@ -5516,6 +5599,14 @@
             "description": "Enable or Disable a user, only a SA or admin can do this",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "path",
+            "description": "Unvired User to modify",
+            "required": true,
+            "type": "string",
+            "default": ":me"
           },
           {
             "name": "verifyEmail",
@@ -5557,7 +5648,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/users/{userName}/backendusers": {
@@ -5577,9 +5669,9 @@
         ],
         "parameters": [
           {
-            "name": "userName",
-            "in": "path",
-            "description": "Unvired User to create the backend user for",
+            "name": "backendUser",
+            "in": "query",
+            "description": "Backend system user",
             "required": true,
             "type": "string"
           },
@@ -5591,6 +5683,13 @@
             "type": "string"
           },
           {
+            "name": "password",
+            "in": "query",
+            "description": "Backend system password",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "portName",
             "in": "query",
             "description": "Port (System) for which to add the backend user for",
@@ -5598,16 +5697,9 @@
             "type": "string"
           },
           {
-            "name": "backendUser",
-            "in": "query",
-            "description": "Backend system user",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "in": "query",
-            "description": "Backend system password",
+            "name": "userName",
+            "in": "path",
+            "description": "Unvired User to create the backend user for",
             "required": true,
             "type": "string"
           }
@@ -5645,7 +5737,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/users/{userName}/backendusers/{backendUser}/ports/{portName}/": {
@@ -5656,21 +5749,11 @@
         "summary": "Delete Backend User",
         "description": "Delete a Backend User for the Unvired user. Super Admin or Administrator of the current company can access this API",
         "operationId": "deleteBackendUserUsingDELETE_1",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
         ],
         "parameters": [
-          {
-            "name": "userName",
-            "in": "path",
-            "description": "userName",
-            "required": true,
-            "type": "string"
-          },
           {
             "name": "backendUser",
             "in": "path",
@@ -5682,6 +5765,13 @@
             "name": "portName",
             "in": "path",
             "description": "Port (System) that the backend user belongs to",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "path",
+            "description": "userName",
             "required": true,
             "type": "string"
           }
@@ -5713,7 +5803,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/users/{userName}/federationusers": {
@@ -5733,13 +5824,6 @@
         ],
         "parameters": [
           {
-            "name": "userName",
-            "in": "path",
-            "description": "Unvired User to create the Federation User for",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "application",
             "in": "query",
             "description": "The application for which to add the federation user for",
@@ -5751,6 +5835,13 @@
             "name": "federationUser",
             "in": "query",
             "description": "Federation User to create",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "path",
+            "description": "Unvired User to create the Federation User for",
             "required": true,
             "type": "string"
           }
@@ -5782,7 +5873,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/users/{userName}/federationusers/{federationUser}/applications/{appName}": {
@@ -5793,20 +5885,18 @@
         "summary": "Delete a Federation User",
         "description": "Delete a Federation User for the Unvired user / Application. Super Admin or Administrator of the current company can access this API",
         "operationId": "deleteFederationUserUsingDELETE_1",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
         ],
         "parameters": [
           {
-            "name": "userName",
+            "name": "appName",
             "in": "path",
-            "description": "Unvired User that the Federation User belongs to",
+            "description": "Application that the Federation User belongs to",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "default": "ALL"
           },
           {
             "name": "federationUser",
@@ -5816,12 +5906,11 @@
             "type": "string"
           },
           {
-            "name": "appName",
+            "name": "userName",
             "in": "path",
-            "description": "Application that the Federation User belongs to",
+            "description": "Unvired User that the Federation User belongs to",
             "required": true,
-            "type": "string",
-            "default": "ALL"
+            "type": "string"
           }
         ],
         "responses": {
@@ -5857,7 +5946,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/users/{userName}/frontendusers": {
@@ -5877,13 +5967,6 @@
         ],
         "parameters": [
           {
-            "name": "userName",
-            "in": "path",
-            "description": "Unvired User to add the frontend user for",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "company",
             "in": "query",
             "description": "Company the users belong to, if empty authentication company is used",
@@ -5901,6 +5984,13 @@
             "name": "frontendUser",
             "in": "query",
             "description": "Unique Frontend or device identifier of the  user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "path",
+            "description": "Unvired User to add the frontend user for",
             "required": true,
             "type": "string"
           }
@@ -5932,7 +6022,8 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
       }
     },
     "/API/v2/users/{userName}/frontendusers/{frontendUser}": {
@@ -5943,25 +6034,22 @@
         "summary": "Delete Frontend User or Device",
         "description": "Delete a Frontend User or Device for the Unvired user. Super Admin or Administrator of the current company can access this API",
         "operationId": "deleteFrontendUserUsingDELETE_1",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/xml",
           "application/json"
         ],
         "parameters": [
           {
-            "name": "userName",
+            "name": "frontendUser",
             "in": "path",
-            "description": "Unvired User whose frontend user is to be deleted",
+            "description": "Frontend User to delete",
             "required": true,
             "type": "string"
           },
           {
-            "name": "frontendUser",
+            "name": "userName",
             "in": "path",
-            "description": "Frontend User to delete",
+            "description": "Unvired User whose frontend user is to be deleted",
             "required": true,
             "type": "string"
           }
@@ -5993,7 +6081,176 @@
           {
             "basicAuth": []
           }
-        ]
+        ],
+        "deprecated": false
+      }
+    },
+    "/API/v2/users/{userName}/provision": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Provision an application for a new user",
+        "description": "Creates an Unvired User, required FE user and deploy the application.  Super Admin or Administrator of the root company (disallowed in High Security mode) or the current company can access this API",
+        "operationId": "createUserAndDeployUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "query",
+            "description": "Application to deploy",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "company",
+            "in": "query",
+            "description": "Company the user belongs to, if empty authentication company is used",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "firstName",
+            "in": "query",
+            "description": "First Name of the  user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "frontend",
+            "in": "query",
+            "description": "Frontend or Device type to add the frontend user for",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "frontendUser",
+            "in": "query",
+            "description": "Unique Frontend or device identifier of the  user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lastName",
+            "in": "query",
+            "description": "Last Name of the  user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mailId",
+            "in": "query",
+            "description": "Email Id of the  user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "notifyUser",
+            "in": "query",
+            "description": "Notify the user via email",
+            "required": false,
+            "type": "boolean",
+            "default": false,
+            "x-example": false,
+            "enum": [
+              "false",
+              "true"
+            ]
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "Password to set, if not provided password is auto generated",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "Phone number of the  user",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "strict",
+            "in": "query",
+            "description": "Should the email and username be verified?  If true, strict validation will be done with configured values",
+            "required": false,
+            "type": "boolean",
+            "default": true,
+            "enum": [
+              "false",
+              "true"
+            ]
+          },
+          {
+            "name": "userName",
+            "in": "path",
+            "description": "Unvired User to create",
+            "required": true,
+            "type": "string",
+            "default": ":me"
+          },
+          {
+            "name": "userType",
+            "in": "query",
+            "description": "Type of user to create",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "APPLICATION",
+              "ADMIN",
+              "DEVELOPER"
+            ]
+          },
+          {
+            "name": "verifyEmail",
+            "in": "query",
+            "description": "Should the email be verified?  If true, an email with a one time token to verify the email will be sent",
+            "required": false,
+            "type": "string",
+            "default": "false",
+            "enum": [
+              "false",
+              "true"
+            ]
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User created",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "401": {
+            "description": "Incorrect password/authkey, password expired or REST API disabled"
+          },
+          "403": {
+            "description": "Company plan has expired or does not have a valid plan"
+          },
+          "404": {
+            "description": "Company not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "deprecated": false
       }
     }
   },
@@ -6003,37 +6260,739 @@
     }
   },
   "definitions": {
+    "ActivationResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "ActivationResponse",
+      "xml": {
+        "name": "ActivationResponse",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
+    "ActivePlan": {
+      "type": "object",
+      "properties": {
+        "fromDate": {
+          "type": "string",
+          "xml": {
+            "name": "From_Date",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "planName": {
+          "type": "string",
+          "xml": {
+            "name": "Plan_Name",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "planStatus": {
+          "type": "string",
+          "xml": {
+            "name": "Activate",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "planType": {
+          "type": "string",
+          "xml": {
+            "name": "Plan_Type",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "toDate": {
+          "type": "string",
+          "xml": {
+            "name": "To_Date",
+            "attribute": false,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "ActivePlan"
+    },
+    "Application": {
+      "type": "object",
+      "properties": {
+        "activated": {
+          "type": "string",
+          "xml": {
+            "name": "ACTIVATED",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "asyncMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AsyncMessage"
+          }
+        },
+        "deployed": {
+          "type": "string",
+          "xml": {
+            "name": "DEPLOYED",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "description": {
+          "type": "string",
+          "xml": {
+            "name": "DESCRIPTION",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "name": {
+          "type": "string",
+          "xml": {
+            "name": "NAME",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "paType": {
+          "type": "string",
+          "xml": {
+            "name": "PA_TYPE",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "syncMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SyncMessage"
+          }
+        },
+        "vendor": {
+          "type": "string",
+          "xml": {
+            "name": "VENDOR",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "version": {
+          "type": "string",
+          "xml": {
+            "name": "VERSION",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Application"
+    },
+    "ApplicationDeploymentResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "ApplicationDeploymentResponse",
+      "xml": {
+        "name": "ApplicationDeploymentResponse",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
+    "ApplicationPropertiesResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "properties": {
+          "type": "array",
+          "xml": {
+            "name": "Properties",
+            "attribute": false,
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Property"
+          }
+        },
+        "property": {
+          "xml": {
+            "name": "Property",
+            "attribute": false,
+            "wrapped": false
+          },
+          "$ref": "#/definitions/Property"
+        }
+      },
+      "title": "ApplicationPropertiesResponse"
+    },
+    "ApplicationResponse": {
+      "type": "object",
+      "properties": {
+        "application": {
+          "$ref": "#/definitions/Application"
+        },
+        "applications": {
+          "type": "array",
+          "xml": {
+            "name": "applications",
+            "attribute": false,
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Application"
+          }
+        },
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "ApplicationResponse"
+    },
+    "ApplicationSecretResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "secrets": {
+          "type": "array",
+          "xml": {
+            "name": "secrets",
+            "attribute": false,
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Secret"
+          }
+        }
+      },
+      "title": "ApplicationSecretResponse"
+    },
+    "ApplicationSettingsResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "settings": {
+          "type": "array",
+          "xml": {
+            "name": "settings",
+            "attribute": false,
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Setting"
+          }
+        }
+      },
+      "title": "ApplicationSettingsResponse"
+    },
+    "ApplicationUndeploymentResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "ApplicationUndeploymentResponse",
+      "xml": {
+        "name": "ApplicationUnDeploymentResponse",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
+    "ApplicationUsageResponse": {
+      "type": "object",
+      "properties": {
+        "application": {
+          "type": "string",
+          "xml": {
+            "name": "application",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "nextoffset": {
+          "type": "string",
+          "xml": {
+            "name": "nextoffset",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "usages": {
+          "type": "array",
+          "xml": {
+            "name": "usages",
+            "attribute": false,
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Usage"
+          }
+        }
+      },
+      "title": "ApplicationUsageResponse",
+      "xml": {
+        "name": "ApplicationUsageResponse",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
+    "ApplicationUserResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "nextOffset": {
+          "type": "string"
+        },
+        "users": {
+          "type": "array",
+          "xml": {
+            "name": "users",
+            "attribute": false,
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/DeployedUser"
+          }
+        }
+      },
+      "title": "ApplicationUserResponse",
+      "xml": {
+        "name": "ApplicationUserResponse",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
+    "ApplicationUserSettingsResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "settings": {
+          "type": "array",
+          "xml": {
+            "name": "settings",
+            "attribute": false,
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Setting"
+          }
+        }
+      },
+      "title": "ApplicationUserSettingsResponse"
+    },
+    "AsyncMessage": {
+      "type": "object",
+      "properties": {
+        "dataReceived": {
+          "type": "string",
+          "xml": {
+            "name": "DATA_RECEIVED",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "dataSent": {
+          "type": "string",
+          "xml": {
+            "name": "DATA_SENT",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "delivered": {
+          "type": "string",
+          "xml": {
+            "name": "DELIVERED",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "discarded": {
+          "type": "string",
+          "xml": {
+            "name": "DISCARDED",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "failed": {
+          "type": "string",
+          "xml": {
+            "name": "FAILED",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "held": {
+          "type": "string",
+          "xml": {
+            "name": "HELD",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "ignored": {
+          "type": "string",
+          "xml": {
+            "name": "IGNORED",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "queued": {
+          "type": "string",
+          "xml": {
+            "name": "QUEUED",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "ready": {
+          "type": "string",
+          "xml": {
+            "name": "READY",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "total": {
+          "type": "string",
+          "xml": {
+            "name": "TOTAL",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "AsyncMessage"
+    },
+    "AttachmentResponse": {
+      "type": "object",
+      "properties": {
+        "attachmentId": {
+          "type": "string",
+          "xml": {
+            "name": "attachmentId",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "cacheLocation": {
+          "type": "string",
+          "xml": {
+            "name": "cacheLocation",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "AttachmentResponse"
+    },
+    "AuthenticationResponse": {
+      "type": "object",
+      "properties": {
+        "authKey": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "unviredId": {
+          "type": "string"
+        }
+      },
+      "title": "AuthenticationResponse",
+      "xml": {
+        "name": "AuthenticationResponse",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
+    "BackendUser": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "xml": {
+            "name": "name",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "port": {
+          "type": "string",
+          "xml": {
+            "name": "port",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "BackendUser"
+    },
     "Company": {
+      "type": "object",
       "properties": {
         "address": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "Address",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "altPhone": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "Alternate_Phone",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "city": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "City",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "compAlias": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "Alias",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "compEmail": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "Email",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "compName": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "Name",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "country": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "Country",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "customerType": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "Customer_Type",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "fax": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "Fax",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "phone": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "Phone",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "plan": {
           "type": "array",
@@ -6042,97 +7001,467 @@
           }
         },
         "state": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "State",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "timeZone": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "TimeZone",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "zip": {
-          "type": "string"
-        }
-      }
-    },
-    "ExecuteForResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "results": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Result"
+          "type": "string",
+          "xml": {
+            "name": "Zip",
+            "attribute": false,
+            "wrapped": false
           }
         }
-      }
+      },
+      "title": "Company"
     },
-    "Os": {
+    "CompanyPropertiesResponse": {
+      "type": "object",
       "properties": {
-        "architecture": {
-          "type": "string"
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
         },
-        "name": {
-          "type": "string"
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
         },
-        "version": {
-          "type": "string"
+        "properties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Property"
+          }
         }
-      }
-    },
-    "Port": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "system": {
-          "type": "string"
-        }
+      },
+      "title": "CompanyPropertiesResponse",
+      "xml": {
+        "name": "CompanyPropertiesResponse",
+        "attribute": false,
+        "wrapped": false
       }
     },
     "CompanyResponse": {
+      "type": "object",
       "properties": {
         "comp": {
+          "xml": {
+            "name": "Company",
+            "attribute": false,
+            "wrapped": false
+          },
           "$ref": "#/definitions/Company"
         },
         "company": {
           "type": "array",
+          "xml": {
+            "name": "Companies",
+            "attribute": false,
+            "wrapped": true
+          },
           "items": {
             "$ref": "#/definitions/Company"
           }
         },
         "error": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "message": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "plans": {
           "type": "array",
+          "xml": {
+            "name": "Available_Plans",
+            "attribute": false,
+            "wrapped": true
+          },
           "items": {
             "$ref": "#/definitions/Plan"
           }
         }
-      }
+      },
+      "title": "CompanyResponse"
     },
     "Cpu": {
+      "type": "object",
       "properties": {
         "cores": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "CORES",
+            "attribute": true,
+            "wrapped": false
+          }
         },
         "utilization": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "UTILIZATION",
+            "attribute": true,
+            "wrapped": false
+          }
         }
-      }
+      },
+      "title": "Cpu"
     },
-    "GroupsResponse": {
+    "DeferredResult«ResponseEntity«object»»": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "object"
+        },
+        "setOrExpired": {
+          "type": "boolean"
+        }
+      },
+      "title": "DeferredResult«ResponseEntity«object»»"
+    },
+    "DeployedUser": {
+      "type": "object",
+      "properties": {
+        "deviceId": {
+          "type": "string",
+          "xml": {
+            "name": "deviceId",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "status": {
+          "type": "string",
+          "xml": {
+            "name": "status",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "unviredId": {
+          "type": "string",
+          "xml": {
+            "name": "unviredId",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "DeployedUser"
+    },
+    "Disk": {
+      "type": "object",
+      "properties": {
+        "free": {
+          "type": "string",
+          "xml": {
+            "name": "FREE",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "total": {
+          "type": "string",
+          "xml": {
+            "name": "TOTAL",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "used": {
+          "type": "string",
+          "xml": {
+            "name": "USED",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Disk"
+    },
+    "DownloadMsgResponse": {
+      "type": "object",
       "properties": {
         "error": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "DownloadMsgResponse",
+      "xml": {
+        "name": "DownloadMsgResponse",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
+    "ExecuteForResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "results": {
+          "type": "array",
+          "xml": {
+            "name": "results",
+            "attribute": false,
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Result"
+          }
+        }
+      },
+      "title": "ExecuteForResponse",
+      "xml": {
+        "name": "ExecuteResponse",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
+    "ExecuteResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "results": {
+          "type": "array",
+          "xml": {
+            "name": "results",
+            "attribute": false,
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Result"
+          }
+        }
+      },
+      "title": "ExecuteResponse",
+      "xml": {
+        "name": "ExecuteResponse",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
+    "FederationUser": {
+      "type": "object",
+      "properties": {
+        "application": {
+          "type": "string",
+          "xml": {
+            "name": "application",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "name": {
+          "type": "string",
+          "xml": {
+            "name": "name",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "FederationUser"
+    },
+    "Frontend": {
+      "type": "object",
+      "properties": {
+        "frontend": {
+          "type": "string",
+          "xml": {
+            "name": "frontend",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "frontendType": {
+          "type": "string",
+          "xml": {
+            "name": "frontendType",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "name": {
+          "type": "string",
+          "xml": {
+            "name": "name",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Frontend"
+    },
+    "FrontendUser": {
+      "type": "object",
+      "properties": {
+        "frontend": {
+          "type": "string",
+          "xml": {
+            "name": "frontend",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "name": {
+          "type": "string",
+          "xml": {
+            "name": "name",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "FrontendUser"
+    },
+    "Function": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "xml": {
+            "name": "description",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "name": {
+          "type": "string",
+          "xml": {
+            "name": "name",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Function"
+    },
+    "Group": {
+      "type": "object",
+      "properties": {
+        "descrption": {
+          "type": "string",
+          "xml": {
+            "name": "descrption",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "name": {
+          "type": "string",
+          "xml": {
+            "name": "name",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Group"
+    },
+    "GroupResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "group": {
+          "$ref": "#/definitions/Group"
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "GroupResponse"
+    },
+    "GroupsResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "groups": {
           "type": "array",
@@ -6141,383 +7470,872 @@
           }
         },
         "message": {
-          "type": "string"
-        }
-      }
-    },
-    "MessageCountResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "result": {
-          "$ref": "#/definitions/Result"
-        }
-      }
-    },
-    "Result": {
-      "properties": {
-        "convId": {
-          "type": "string"
-        },
-        "device": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "pending": {
-          "type": "string"
-        },
-        "ready": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        },
-        "user": {
-          "type": "string"
-        }
-      }
-    },
-    "ApplicationSecretResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "secrets": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Secret"
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
           }
         }
+      },
+      "title": "GroupsResponse",
+      "xml": {
+        "name": "GroupResponse",
+        "attribute": false,
+        "wrapped": false
       }
     },
-    "AttachmentResponse": {
-      "properties": {
-        "attachmentId": {
-          "type": "string"
-        },
-        "cacheLocation": {
-          "type": "string"
-        },
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "UmpNodeResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "installedOs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Os"
-          }
-        },
-        "javaDetails": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/JavaDetails"
-          }
-        },
-        "lastBeatTime": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "operatingCpu": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Cpu"
-          }
-        },
-        "runningHost": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Host"
-          }
-        },
-        "status": {
-          "type": "string"
-        },
-        "systemRam": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Ram"
-          }
-        },
-        "umpDisk": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Disk"
-          }
-        }
-      }
-    },
-    "Disk": {
-      "properties": {
-        "free": {
-          "type": "string"
-        },
-        "total": {
-          "type": "string"
-        },
-        "used": {
-          "type": "string"
-        }
-      }
-    },
-    "AsyncMessage": {
-      "properties": {
-        "dataReceived": {
-          "type": "string"
-        },
-        "dataSent": {
-          "type": "string"
-        },
-        "delivered": {
-          "type": "string"
-        },
-        "discarded": {
-          "type": "string"
-        },
-        "failed": {
-          "type": "string"
-        },
-        "held": {
-          "type": "string"
-        },
-        "ignored": {
-          "type": "string"
-        },
-        "queued": {
-          "type": "string"
-        },
-        "ready": {
-          "type": "string"
-        },
-        "total": {
-          "type": "string"
-        }
-      }
-    },
-    "MessageResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "messages": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Message"
-          }
-        }
-      }
-    },
-    "Setting": {
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "secure": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
-    },
-    "PushMessageResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "results": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Result"
-          }
-        }
-      }
-    },
-    "UmpResponse": {
-      "properties": {
-        "applications": {
-          "type": "string"
-        },
-        "backends": {
-          "type": "string"
-        },
-        "buildNo": {
-          "type": "string"
-        },
-        "database": {
-          "type": "string"
-        },
-        "edition": {
-          "type": "string"
-        },
-        "frotends": {
-          "type": "string"
-        },
-        "installationType": {
-          "type": "string"
-        },
-        "noOfUserLicensesUsed": {
-          "type": "string"
-        },
-        "nodes": {
-          "type": "string"
-        },
-        "plan": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Plan"
-          }
-        },
-        "serverId": {
-          "type": "string"
-        },
-        "serverType": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      }
-    },
-    "Secret": {
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
-    },
-    "SyncMessage": {
-      "properties": {
-        "dataReceived": {
-          "type": "string"
-        },
-        "dataSent": {
-          "type": "string"
-        },
-        "failed": {
-          "type": "string"
-        },
-        "success": {
-          "type": "string"
-        },
-        "total": {
-          "type": "string"
-        }
-      }
-    },
-    "CompanyPropertiesResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "properties": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Property"
-          }
-        }
-      }
-    },
-    "DeployedUser": {
-      "properties": {
-        "deviceId": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        },
-        "unviredId": {
-          "type": "string"
-        }
-      }
-    },
-    "RedisProperty": {
+    "Host": {
+      "type": "object",
       "properties": {
         "ip": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "IP",
+            "attribute": true,
+            "wrapped": false
+          }
         },
-        "port": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "xml": {
+            "name": "NAME",
+            "attribute": true,
+            "wrapped": false
+          }
         },
-        "type": {
-          "type": "string"
+        "serverTime": {
+          "type": "string",
+          "xml": {
+            "name": "SERVER_TIME",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "timeZone": {
+          "type": "string",
+          "xml": {
+            "name": "TIMEZONE",
+            "attribute": true,
+            "wrapped": false
+          }
         }
-      }
+      },
+      "title": "Host"
+    },
+    "JavaDetails": {
+      "type": "object",
+      "properties": {
+        "freeMemory": {
+          "type": "string",
+          "xml": {
+            "name": "FREE_MEMORY",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "totalMemory": {
+          "type": "string",
+          "xml": {
+            "name": "TOTAL_MEMORY",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "usedMemory": {
+          "type": "string",
+          "xml": {
+            "name": "USED_MEMORY",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "utilization": {
+          "type": "string",
+          "xml": {
+            "name": "UTILIZATION",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "vendor": {
+          "type": "string",
+          "xml": {
+            "name": "VENDOR",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "version": {
+          "type": "string",
+          "xml": {
+            "name": "VERSION",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "vmName": {
+          "type": "string",
+          "xml": {
+            "name": "VM_NAME",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "vmVendor": {
+          "type": "string",
+          "xml": {
+            "name": "VM_VENDOR",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "vmVersion": {
+          "type": "string",
+          "xml": {
+            "name": "VM_VERSION",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "JavaDetails"
     },
     "Library": {
+      "type": "object",
       "properties": {
         "description": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "description",
+            "attribute": true,
+            "wrapped": false
+          }
         },
         "functions": {
           "type": "array",
+          "xml": {
+            "name": "functions",
+            "attribute": false,
+            "wrapped": true
+          },
           "items": {
             "$ref": "#/definitions/Function"
           }
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "name",
+            "attribute": true,
+            "wrapped": false
+          }
         },
         "ports": {
           "type": "array",
+          "xml": {
+            "name": "ports",
+            "attribute": false,
+            "wrapped": true
+          },
           "items": {
             "$ref": "#/definitions/Port"
           }
         }
-      }
+      },
+      "title": "Library"
     },
-    "ApplicationUserResponse": {
+    "LibraryResponse": {
+      "type": "object",
       "properties": {
         "error": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "library": {
+          "$ref": "#/definitions/Library"
         },
         "message": {
-          "type": "string"
-        },
-        "nextOffset": {
-          "type": "string"
-        },
-        "users": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/DeployedUser"
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
           }
         }
+      },
+      "title": "LibraryResponse",
+      "xml": {
+        "name": "LibraryResponse",
+        "attribute": false,
+        "wrapped": false
       }
     },
+    "Message": {
+      "type": "object",
+      "properties": {
+        "convId": {
+          "type": "string",
+          "xml": {
+            "name": "convId",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "status": {
+          "type": "string",
+          "xml": {
+            "name": "status",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "unviredId": {
+          "type": "string",
+          "xml": {
+            "name": "unviredId",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "user": {
+          "type": "string",
+          "xml": {
+            "name": "user",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Message"
+    },
+    "MessageCountResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "result": {
+          "$ref": "#/definitions/Result"
+        }
+      },
+      "title": "MessageCountResponse",
+      "xml": {
+        "name": "ApplicationResponse",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
+    "MessageResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "messages": {
+          "type": "array",
+          "xml": {
+            "name": "messages",
+            "attribute": false,
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Message"
+          }
+        }
+      },
+      "title": "MessageResponse"
+    },
+    "Notification": {
+      "type": "object",
+      "properties": {
+        "application": {
+          "type": "string",
+          "xml": {
+            "name": "APPLICATION_NAME",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "conversationId": {
+          "type": "string",
+          "xml": {
+            "name": "CONVERSATION_ID",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "level": {
+          "type": "string",
+          "xml": {
+            "name": "LEVEL",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "MESSAGE",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "postTime": {
+          "type": "string",
+          "xml": {
+            "name": "POST_TIME",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "type": {
+          "type": "string",
+          "xml": {
+            "name": "TYPE",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "user": {
+          "type": "string",
+          "xml": {
+            "name": "USER",
+            "attribute": false,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Notification"
+    },
+    "Os": {
+      "type": "object",
+      "properties": {
+        "architecture": {
+          "type": "string",
+          "xml": {
+            "name": "ARCHITECTURE",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "name": {
+          "type": "string",
+          "xml": {
+            "name": "NAME",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "version": {
+          "type": "string",
+          "xml": {
+            "name": "VERSION",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Os"
+    },
+    "PasswordlessResponse": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "loginToken": {
+          "type": "string"
+        },
+        "loginValidated": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "mobileAppRedirectURL": {
+          "type": "string"
+        },
+        "profileId": {
+          "type": "string"
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "validationMessage": {
+          "type": "string"
+        }
+      },
+      "title": "PasswordlessResponse"
+    },
+    "Plan": {
+      "type": "object",
+      "properties": {
+        "adminUsers": {
+          "type": "string",
+          "xml": {
+            "name": "ADMIN_USERS",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "appAdminUsers": {
+          "type": "string",
+          "xml": {
+            "name": "APP_ADMIN_USERS",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "applications": {
+          "type": "string",
+          "xml": {
+            "name": "APPLICATIONS",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "communicationUsers": {
+          "type": "string",
+          "xml": {
+            "name": "COMMUNICATION_USERS",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "devUsers": {
+          "type": "string",
+          "xml": {
+            "name": "DEV_USERS",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "deviceData": {
+          "type": "string",
+          "xml": {
+            "name": "DEVICE_DATA",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "deviceUsers": {
+          "type": "string",
+          "xml": {
+            "name": "DEVICE_USERS",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "frontends": {
+          "type": "string",
+          "xml": {
+            "name": "FRONTENDS",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "planName": {
+          "type": "string",
+          "xml": {
+            "name": "NAME",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "serverData": {
+          "type": "string",
+          "xml": {
+            "name": "SERVER_DATA",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "systems": {
+          "type": "string",
+          "xml": {
+            "name": "SYSTEMS",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Plan"
+    },
+    "Port": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "xml": {
+            "name": "description",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "name": {
+          "type": "string",
+          "xml": {
+            "name": "name",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "system": {
+          "type": "string",
+          "xml": {
+            "name": "system",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Port"
+    },
+    "Property": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "xml": {
+            "name": "name",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "value": {
+          "type": "string",
+          "xml": {
+            "name": "value",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Property"
+    },
+    "PushMessageResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "results": {
+          "type": "array",
+          "xml": {
+            "name": "results",
+            "attribute": false,
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Result"
+          }
+        }
+      },
+      "title": "PushMessageResponse",
+      "xml": {
+        "name": "PushMessageResponse",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
+    "PushNotificationResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "results": {
+          "type": "array",
+          "xml": {
+            "name": "results",
+            "attribute": false,
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Result"
+          }
+        }
+      },
+      "title": "PushNotificationResponse",
+      "xml": {
+        "name": "PushNotificationResponse",
+        "attribute": false,
+        "wrapped": false
+      }
+    },
+    "Ram": {
+      "type": "object",
+      "properties": {
+        "free": {
+          "type": "string",
+          "xml": {
+            "name": "FREE",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "total": {
+          "type": "string",
+          "xml": {
+            "name": "TOTAL",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "used": {
+          "type": "string",
+          "xml": {
+            "name": "USED",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Ram"
+    },
+    "Redis": {
+      "type": "object",
+      "properties": {
+        "redisProperties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RedisProperty"
+          }
+        },
+        "sentinals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Sentinel"
+          }
+        }
+      },
+      "title": "Redis"
+    },
+    "RedisProperty": {
+      "type": "object",
+      "properties": {
+        "ip": {
+          "type": "string",
+          "xml": {
+            "name": "IP",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "port": {
+          "type": "string",
+          "xml": {
+            "name": "PORT",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "type": {
+          "type": "string",
+          "xml": {
+            "name": "TYPE",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "RedisProperty"
+    },
+    "Result": {
+      "type": "object",
+      "properties": {
+        "convId": {
+          "type": "string",
+          "xml": {
+            "name": "convId",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "device": {
+          "type": "string",
+          "xml": {
+            "name": "device",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "pending": {
+          "type": "string",
+          "xml": {
+            "name": "pending",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "ready": {
+          "type": "string",
+          "xml": {
+            "name": "ready",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "status": {
+          "type": "string",
+          "xml": {
+            "name": "status",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "user": {
+          "type": "string",
+          "xml": {
+            "name": "user",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Result"
+    },
+    "Secret": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "xml": {
+            "name": "name",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "value": {
+          "type": "string",
+          "xml": {
+            "name": "value",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Secret"
+    },
+    "Sentinel": {
+      "type": "object",
+      "properties": {
+        "ip": {
+          "type": "string",
+          "xml": {
+            "name": "IP",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "port": {
+          "type": "string",
+          "xml": {
+            "name": "PORT",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "status": {
+          "type": "string",
+          "xml": {
+            "name": "STATUS",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Sentinel"
+    },
     "SessionResponse": {
+      "type": "object",
       "properties": {
         "authKey": {
           "type": "string"
@@ -6529,13 +8347,23 @@
           "type": "string"
         },
         "error": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "expire": {
           "type": "string"
         },
         "message": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "role": {
           "type": "string"
@@ -6554,60 +8382,438 @@
         },
         "users": {
           "type": "array",
+          "xml": {
+            "name": "users",
+            "attribute": false,
+            "wrapped": true
+          },
           "items": {
             "$ref": "#/definitions/FrontendUser"
           }
         }
-      }
+      },
+      "title": "SessionResponse"
     },
-    "Application": {
+    "Setting": {
+      "type": "object",
       "properties": {
-        "activated": {
-          "type": "string"
-        },
-        "asyncMessages": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AsyncMessage"
+        "name": {
+          "type": "string",
+          "xml": {
+            "name": "name",
+            "attribute": true,
+            "wrapped": false
           }
         },
-        "deployed": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "paType": {
-          "type": "string"
-        },
-        "syncMessages": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SyncMessage"
+        "secure": {
+          "type": "string",
+          "xml": {
+            "name": "secure",
+            "attribute": true,
+            "wrapped": false
           }
         },
-        "vendor": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
+        "value": {
+          "type": "string",
+          "xml": {
+            "name": "value",
+            "attribute": true,
+            "wrapped": false
+          }
         }
-      }
+      },
+      "title": "Setting"
     },
-    "Group": {
+    "StatusResponse": {
+      "type": "object",
       "properties": {
-        "descrption": {
-          "type": "string"
+        "application": {
+          "xml": {
+            "name": "APPLICATION",
+            "attribute": false,
+            "wrapped": false
+          },
+          "$ref": "#/definitions/Application"
         },
-        "name": {
-          "type": "string"
+        "applications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Application"
+          }
+        },
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "notifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Notification"
+          }
+        },
+        "redis": {
+          "xml": {
+            "name": "REDIS",
+            "attribute": false,
+            "wrapped": false
+          },
+          "$ref": "#/definitions/Redis"
+        },
+        "umpNodeResponses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UmpNodeResponse"
+          }
+        },
+        "umpResponse": {
+          "xml": {
+            "name": "UMP",
+            "attribute": false,
+            "wrapped": false
+          },
+          "$ref": "#/definitions/UmpResponse"
         }
-      }
+      },
+      "title": "StatusResponse"
+    },
+    "SyncMessage": {
+      "type": "object",
+      "properties": {
+        "dataReceived": {
+          "type": "string",
+          "xml": {
+            "name": "DATA_RECEIVED",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "dataSent": {
+          "type": "string",
+          "xml": {
+            "name": "DATA_SENT",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "failed": {
+          "type": "string",
+          "xml": {
+            "name": "FAILED",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "success": {
+          "type": "string",
+          "xml": {
+            "name": "SUCCESS",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "total": {
+          "type": "string",
+          "xml": {
+            "name": "TOTAL",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "SyncMessage"
+    },
+    "UmpNodeResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "installedOs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Os"
+          }
+        },
+        "javaDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/JavaDetails"
+          }
+        },
+        "lastBeatTime": {
+          "type": "string",
+          "xml": {
+            "name": "HEARTBEAT",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "operatingCpu": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Cpu"
+          }
+        },
+        "runningHost": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Host"
+          }
+        },
+        "status": {
+          "type": "string",
+          "xml": {
+            "name": "STATUS",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "systemRam": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Ram"
+          }
+        },
+        "umpDisk": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Disk"
+          }
+        }
+      },
+      "title": "UmpNodeResponse"
+    },
+    "UmpResponse": {
+      "type": "object",
+      "properties": {
+        "applications": {
+          "type": "string",
+          "xml": {
+            "name": "APPLICATIONS",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "backends": {
+          "type": "string",
+          "xml": {
+            "name": "BACKENDS",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "buildNo": {
+          "type": "string",
+          "xml": {
+            "name": "BUILD_NO",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "database": {
+          "type": "string",
+          "xml": {
+            "name": "DATABASE",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "edition": {
+          "type": "string",
+          "xml": {
+            "name": "EDITION",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "frotends": {
+          "type": "string",
+          "xml": {
+            "name": "FRONTENDS",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "installationType": {
+          "type": "string",
+          "xml": {
+            "name": "INSTALLATION_TYPE",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "noOfUserLicensesUsed": {
+          "type": "string",
+          "xml": {
+            "name": "LICENSES_USED",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "nodes": {
+          "type": "string",
+          "xml": {
+            "name": "NODES",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "plan": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Plan"
+          }
+        },
+        "serverId": {
+          "type": "string",
+          "xml": {
+            "name": "SERVER_ID",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "serverType": {
+          "type": "string",
+          "xml": {
+            "name": "SERVER_TYPE",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "url": {
+          "type": "string",
+          "xml": {
+            "name": "URL",
+            "attribute": false,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "UmpResponse"
+    },
+    "Usage": {
+      "type": "object",
+      "properties": {
+        "clientAppUpdateTime": {
+          "type": "string",
+          "xml": {
+            "name": "clientAppUpdateTime",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "clientAppVersion": {
+          "type": "string",
+          "xml": {
+            "name": "clientAppVersion",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "clientFrameworkVersion": {
+          "type": "string",
+          "xml": {
+            "name": "clientFrameworkVersion",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "deviceModel": {
+          "type": "string",
+          "xml": {
+            "name": "deviceModel",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "deviceOsVersion": {
+          "type": "string",
+          "xml": {
+            "name": "deviceOsVersion",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "frontendType": {
+          "type": "string",
+          "xml": {
+            "name": "frontendType",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "frontendUser": {
+          "type": "string",
+          "xml": {
+            "name": "frontendUser",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "ipAddress": {
+          "type": "string",
+          "xml": {
+            "name": "ipAddress",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "lastAccessTime": {
+          "type": "integer",
+          "format": "int64",
+          "xml": {
+            "name": "lastAccessTime",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "lastDownLoadTime": {
+          "type": "integer",
+          "format": "int64",
+          "xml": {
+            "name": "lastDownLoadTime",
+            "attribute": true,
+            "wrapped": false
+          }
+        },
+        "user": {
+          "type": "string",
+          "xml": {
+            "name": "user",
+            "attribute": true,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "Usage"
     },
     "User": {
+      "type": "object",
       "properties": {
         "authKey": {
           "type": "string"
@@ -6619,7 +8825,12 @@
           }
         },
         "email": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "email",
+            "attribute": true,
+            "wrapped": false
+          }
         },
         "federationUsers": {
           "type": "array",
@@ -6628,7 +8839,12 @@
           }
         },
         "firstName": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "firstName",
+            "attribute": true,
+            "wrapped": false
+          }
         },
         "frontendUsers": {
           "type": "array",
@@ -6643,45 +8859,91 @@
           }
         },
         "lastName": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "lastName",
+            "attribute": true,
+            "wrapped": false
+          }
         },
         "profileId": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "profileId",
+            "attribute": true,
+            "wrapped": false
+          }
         },
         "status": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "status",
+            "attribute": true,
+            "wrapped": false
+          }
         },
         "userName": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "userName",
+            "attribute": true,
+            "wrapped": false
+          }
         },
         "userType": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "userType",
+            "attribute": true,
+            "wrapped": false
+          }
         }
-      }
+      },
+      "title": "User"
     },
-    "Message": {
-      "properties": {
-        "convId": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        },
-        "unviredId": {
-          "type": "string"
-        },
-        "user": {
-          "type": "string"
-        }
-      }
-    },
-    "UsersResponse": {
+    "UserResponse": {
+      "type": "object",
       "properties": {
         "error": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "message": {
-          "type": "string"
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        }
+      },
+      "title": "UserResponse"
+    },
+    "UsersResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "xml": {
+            "name": "error",
+            "attribute": false,
+            "wrapped": false
+          }
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "message",
+            "attribute": false,
+            "wrapped": false
+          }
         },
         "nextoffset": {
           "type": "string"
@@ -6692,513 +8954,12 @@
             "$ref": "#/definitions/User"
           }
         }
-      }
-    },
-    "ActivationResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "ActivePlan": {
-      "properties": {
-        "fromDate": {
-          "type": "string"
-        },
-        "planName": {
-          "type": "string"
-        },
-        "planStatus": {
-          "type": "string"
-        },
-        "planType": {
-          "type": "string"
-        },
-        "toDate": {
-          "type": "string"
-        }
-      }
-    },
-    "BackendUser": {
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "port": {
-          "type": "string"
-        }
-      }
-    },
-    "Notification": {
-      "properties": {
-        "application": {
-          "type": "string"
-        },
-        "conversationId": {
-          "type": "string"
-        },
-        "level": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "postTime": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "user": {
-          "type": "string"
-        }
-      }
-    },
-    "Function": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "ApplicationPropertiesResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "properties": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Property"
-          }
-        },
-        "property": {
-          "$ref": "#/definitions/Property"
-        }
-      }
-    },
-    "DownloadMsgResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "LibraryResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "library": {
-          "$ref": "#/definitions/Library"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "Property": {
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
-    },
-    "ApplicationUndeploymentResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "PushNotificationResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "results": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Result"
-          }
-        }
-      }
-    },
-    "FederationUser": {
-      "properties": {
-        "application": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "PasswordlessResponse": {
-      "properties": {
-        "email": {
-          "type": "string"
-        },
-        "error": {
-          "type": "string"
-        },
-        "firstName": {
-          "type": "string"
-        },
-        "lastName": {
-          "type": "string"
-        },
-        "loginToken": {
-          "type": "string"
-        },
-        "loginValidated": {
-          "type": "boolean"
-        },
-        "message": {
-          "type": "string"
-        },
-        "mobileAppRedirectURL": {
-          "type": "string"
-        },
-        "profileId": {
-          "type": "string"
-        },
-        "sessionId": {
-          "type": "string"
-        },
-        "userName": {
-          "type": "string"
-        },
-        "validationMessage": {
-          "type": "string"
-        }
-      }
-    },
-    "Sentinel": {
-      "properties": {
-        "ip": {
-          "type": "string"
-        },
-        "port": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        }
-      }
-    },
-    "ApplicationResponse": {
-      "properties": {
-        "application": {
-          "$ref": "#/definitions/Application"
-        },
-        "applications": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Application"
-          }
-        },
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "Redis": {
-      "properties": {
-        "redisProperties": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RedisProperty"
-          }
-        },
-        "sentinals": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Sentinel"
-          }
-        }
-      }
-    },
-    "ExecuteResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "results": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Result"
-          }
-        }
-      }
-    },
-    "Host": {
-      "properties": {
-        "ip": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "serverTime": {
-          "type": "string"
-        },
-        "timeZone": {
-          "type": "string"
-        }
-      }
-    },
-    "ApplicationUserSettingsResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "settings": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Setting"
-          }
-        }
-      }
-    },
-    "StatusResponse": {
-      "properties": {
-        "application": {
-          "$ref": "#/definitions/Application"
-        },
-        "applications": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Application"
-          }
-        },
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "notifications": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Notification"
-          }
-        },
-        "redis": {
-          "$ref": "#/definitions/Redis"
-        },
-        "umpNodeResponses": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/UmpNodeResponse"
-          }
-        },
-        "umpResponse": {
-          "$ref": "#/definitions/UmpResponse"
-        }
-      }
-    },
-    "Plan": {
-      "properties": {
-        "adminUsers": {
-          "type": "string"
-        },
-        "appAdminUsers": {
-          "type": "string"
-        },
-        "applications": {
-          "type": "string"
-        },
-        "communicationUsers": {
-          "type": "string"
-        },
-        "devUsers": {
-          "type": "string"
-        },
-        "deviceData": {
-          "type": "string"
-        },
-        "deviceUsers": {
-          "type": "string"
-        },
-        "frontends": {
-          "type": "string"
-        },
-        "planName": {
-          "type": "string"
-        },
-        "serverData": {
-          "type": "string"
-        },
-        "systems": {
-          "type": "string"
-        }
-      }
-    },
-    "AuthenticationResponse": {
-      "properties": {
-        "authKey": {
-          "type": "string"
-        },
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "unviredId": {
-          "type": "string"
-        }
-      }
-    },
-    "GroupResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "group": {
-          "$ref": "#/definitions/Group"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "ApplicationSettingsResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "settings": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Setting"
-          }
-        }
-      }
-    },
-    "UserResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "user": {
-          "$ref": "#/definitions/User"
-        }
-      }
-    },
-    "Frontend": {
-      "properties": {
-        "frontend": {
-          "type": "string"
-        },
-        "frontendType": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "ApplicationDeploymentResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "FrontendUser": {
-      "properties": {
-        "frontend": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "JavaDetails": {
-      "properties": {
-        "freeMemory": {
-          "type": "string"
-        },
-        "totalMemory": {
-          "type": "string"
-        },
-        "usedMemory": {
-          "type": "string"
-        },
-        "utilization": {
-          "type": "string"
-        },
-        "vendor": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        },
-        "vmName": {
-          "type": "string"
-        },
-        "vmVendor": {
-          "type": "string"
-        },
-        "vmVersion": {
-          "type": "string"
-        }
-      }
-    },
-    "Ram": {
-      "properties": {
-        "free": {
-          "type": "string"
-        },
-        "total": {
-          "type": "string"
-        },
-        "used": {
-          "type": "string"
-        }
+      },
+      "title": "UsersResponse",
+      "xml": {
+        "name": "UsersResponse",
+        "attribute": false,
+        "wrapped": false
       }
     }
   }
