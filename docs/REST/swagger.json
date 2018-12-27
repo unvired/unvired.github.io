@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Unvired Mobile Platform Rest API. API Authentication is HTTP BASIC Auth, the user should be passed in as COMPANY\\USER. Note: Due to an issue with the way the docs are generated, the response object is not generated correctly.  Until the upstream provider corrects it please check actual responses.",
-    "version": "V2 (Release 2016)",
-    "title": "The UMP4 Rest API",
+    "description": "Unvired Mobile Platform Rest API. API Authentication is HTTP BASIC Auth, the user should be passed in as COMPANY\\USER. Note: Due to an issue with the way the docs are generated, the response object is not generated correctly.  Until the upstream provider corrects it please check actual responses.  Note that this API definition is also supported on UMP4",
+    "version": "V2-Release-2019",
+    "title": "The UMP5 Rest API",
     "contact": {
       "name": "Unvired Inc."
     },
@@ -12,7 +12,7 @@
       "url": "http://unvired.com/resources/sdk-license"
     }
   },
-  "host": "demo.unvired.io",
+  "host": "sandbox.unvired.io",
   "basePath": "/UMP",
   "tags": [
     {
@@ -3339,6 +3339,25 @@
             "description": "Country",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Company Email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "encryption",
+            "in": "query",
+            "description": "Encryption",
+            "required": false,
+            "type": "string",
+            "default": "ENABLED",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
           },
           {
             "name": "folder",
