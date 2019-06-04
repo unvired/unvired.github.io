@@ -17,9 +17,9 @@ Welcome to the Unvired Developer Portal.
 <br>
 <strong>UMP v4 REST API Documentation: </strong><a href="https://unvired.atlassian.net/wiki/spaces/UNVIRED/pages/159384111/UMP+REST+API+Guide" target="_blank">UMP v4 REST API Guide</a>
 <br>
-<strong>UMP v4 REST API Swagger Online: </strong><a href="https://app.swaggerhub.com/apis-docs/unvired/UMP-4-Rest-API/V2-Release-2018" target="_blank">UMP v4 REST API Swagger IDE</a>
+<strong>UMP v4 REST API Swagger Online: </strong><a href="https://app.swaggerhub.com/apis-docs/unvired/UMP-4-Rest-API/" target="_blank">UMP v4 REST API Swagger IDE</a>
 <br>
-<strong>UMP v5 REST API Swagger Online: </strong><a href="https://app.swaggerhub.com/apis-docs/unvired/UMP-5-Rest-API/V2-Release-2019-2" target="_blank">UMP v5 REST API Swagger IDE</a>
+<strong>UMP v5 REST API Swagger Online: </strong><a href="https://app.swaggerhub.com/apis-docs/unvired/UMP-5-Rest-API/" target="_blank">UMP v5 REST API Swagger IDE</a>
 <br>
 <br>
 <strong>Use Postman? Click the button to import the UMP v4 API collection in Postman.</strong>
