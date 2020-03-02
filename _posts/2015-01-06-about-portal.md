@@ -7,17 +7,15 @@ category: Home
 Welcome to the Unvired Developer Portal.
 
 <div class="message">
-<strong>Documentation Home: </strong><a href="https://unvired.atlassian.net/wiki/" target="_blank">All Guides</a>
+<strong>Documentation Home: </strong><a href="https://docs.unvired.com/" target="_blank">All Guides</a>
 <br>
-<strong>Build Mobile Apps:  </strong><a href="https://unvired.atlassian.net/wiki/spaces/UNVIRED/overview" target="_blank">Mobile App Developer Guide</a>
+<strong>Build Mobile Apps:  </strong><a href="https://docs.unvired.com/books/application-development" target="_blank">Mobile App Developer Guide</a>
 <br>
-<strong>Build ChymeBots:  </strong><a href="https://unvired.atlassian.net/wiki/spaces/CHYME/pages/37781549/Chyme+Development+Guide" target="_blank">ChymeBots Developer Guide</a>
+<strong>Build ChymeBots:  </strong><a href="https://docs.unvired.com/books/chyme-bots-development-guide" target="_blank">ChymeBots Developer Guide</a>
 <br><br>
-<strong><u>REST API Current</u></strong>
+<strong><u>REST API</u></strong>
 <br>
-<strong>UMP v4 REST API Documentation: </strong><a href="https://unvired.atlassian.net/wiki/spaces/UNVIRED/pages/159384111/UMP+REST+API+Guide" target="_blank">UMP v4 REST API Guide</a>
-<br>
-<strong>UMP v4 REST API Swagger Online: </strong><a href="https://app.swaggerhub.com/apis-docs/unvired/UMP-4-Rest-API/" target="_blank">UMP v4 REST API Swagger IDE</a>
+<strong>UMP REST API Documentation: </strong><a href="https://docs.unvired.com/books/unvired-digital-platform-rest-api/page/rest-api" target="_blank">UMP REST API Guide</a>
 <br>
 <strong>UMP v5 REST API Swagger Online: </strong><a href="https://app.swaggerhub.com/apis-docs/unvired/UMP-5-Rest-API/" target="_blank">UMP v5 REST API Swagger IDE</a>
 <br>
@@ -42,10 +40,8 @@ data-postman-var-1="a6a2672ed2f3614a7f46"></div>
 <div class="message">
 <strong><u>Other Documents</u></strong>
 <br>
-<strong>UMP Administration Guide: </strong><a href="https://unvired.atlassian.net/wiki/display/UMP4" target="_blank">Unvired Administration Guide</a>
+<strong>UMP Administration Guide: </strong><a href="https://docs.unvired.com/books/administration-guide" target="_blank">Unvired Administration Guide</a>
 <br>
-<strong>UMP Installation Guide: </strong><a href="https://unvired.atlassian.net/wiki/display/IGU4" target="_blank">Unvired Installation Guide</a>
-</div>
 
 <div class="message">
 Make a quickstart in developing apps by heading to the <a href="https://github.com/unvired">Unvired GitHub project</a> for sample programs and more.
