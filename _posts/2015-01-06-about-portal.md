@@ -9,13 +9,13 @@ Welcome to the Unvired Developer Portal.
 <div class="message">
 <strong>Documentation Home: </strong><a href="https://docs.unvired.com/" target="_blank">All Guides</a>
 <br>
-<strong>Build Mobile Apps:  </strong><a href="https://docs.unvired.com/books/application-development" target="_blank">Mobile App Developer Guide</a>
+<strong>Build Mobile Apps:  </strong><a href="https://docs.unvired.com/s/bpnmhosmpdjf7lp9usug/application-development" target="_blank">Mobile App Developer Guide</a>
 <br>
-<strong>Build ChymeBots:  </strong><a href="https://docs.unvired.com/books/chyme-bots-development-guide" target="_blank">ChymeBots Developer Guide</a>
+<strong>Build ChymeBots:  </strong><a href="https://docs.unvired.com/s/bpnmghsmpdjf7lp9usu0/chymebots-development-guide" target="_blank">ChymeBots Developer Guide</a>
 <br><br>
 <strong><u>REST API</u></strong>
 <br>
-<strong>UMP REST API Documentation: </strong><a href="https://docs.unvired.com/books/unvired-digital-platform-rest-api/page/rest-api" target="_blank">UMP REST API Guide</a>
+<strong>UMP REST API Documentation: </strong><a href="https://docs.unvired.com/s/bpnmmnkmpdjf7lp9usvg/unvired-digital-platform-rest-api" target="_blank">UMP REST API Guide</a>
 <br>
 <strong>UMP v5 REST API Swagger Online: </strong><a href="https://app.swaggerhub.com/apis-docs/unvired/UMP-5-Rest-API/" target="_blank">UMP v5 REST API Swagger IDE</a>
 <br>
@@ -25,7 +25,7 @@ Welcome to the Unvired Developer Portal.
 <div class="message">
 <strong><u>Other Documents</u></strong>
 <br>
-<strong>UMP Administration Guide: </strong><a href="https://docs.unvired.com/books/administration-guide" target="_blank">Unvired Administration Guide</a>
+<strong>UMP Administration Guide: </strong><a href="https://docs.unvired.com/s/bpnmj2smpdjf7lp9usv0/administration-guide" target="_blank">Unvired Administration Guide</a>
 <br>
 
 <div class="message">
