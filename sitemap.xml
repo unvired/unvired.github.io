@@ -86,6 +86,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.unvired.com/builder/video/</loc>
+         <lastmod>2024-08-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.unvired.com/builder/admin/forms/</loc>
          <lastmod>2024-08-27</lastmod>
          <changefreq>daily</changefreq>
@@ -202,11 +207,6 @@
     </url>
     <url>
          <loc>https://docs.unvired.com/builder/design/teams-flow/</loc>
-         <lastmod>2024-08-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.unvired.com/builder/design/video/</loc>
          <lastmod>2024-08-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
